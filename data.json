@@ -1,0 +1,67 @@
+{
+  "site_metadata": {
+    "title": "Cuori di Carbone",
+    "subtitle": "Storia di Fatica e Speranza tra le profondità delle Miniere Belghe",
+    "description": "Un progetto corale nato per tutelare gli ex minatori italiani e le loro famiglie, custodendo una memoria collettiva che appartiene alla storia dell'emigrazione."
+  },
+  "stats": [
+    { "value": "480+", "label": "Minatori in Archivio" },
+    { "value": "125+", "label": "Storie Recuperate" },
+    { "value": "344", "label": "Identificati con Successo" },
+    { "value": "136", "label": "In Fase di Identificazione" }
+  ],
+  "minatori_highlights": [
+    {
+      "id": "dolorino-campagnolo",
+      "nome": "Dolorino Campagnolo",
+      "regione": "Friuli-Venezia Giulia",
+      "storia_breve": "Una delle storie all'origine del progetto. Il suo percorso, intrecciato a quello di molti altri uomini, ha dato inizio a questa ricerca.",
+      "immagine": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=600"
+    },
+    {
+      "id": "mario-todeschi",
+      "nome": "Mario Todeschi",
+      "regione": "Trentino-Alto Adige",
+      "storia_breve": "Trento. Tra sacrificio, emigrazione e speranza, la storia di un uomo partito verso il Belgio in cerca di un futuro migliore.",
+      "immagine": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600"
+    }
+  ],
+  "timeline_eventi": [
+    {
+      "data": "15 Maggio 2025",
+      "titolo": "Lancio del Progetto e Convegno",
+      "luogo": "Latisana (UD) – Ex Stazione Ippica",
+      "descrizione": "Un evento dedicato alla memoria dei minatori italiani emigrati in Belgio, tra testimonianze, mostra storica e oggetti d'epoca."
+    },
+    {
+      "data": "14 Dicembre 2025",
+      "titolo": "1ª Cerimonia di Santa Barbara",
+      "luogo": "Latisana (UD)",
+      "descrizione": "Prima celebrazione ufficiale dedicata alla patrona dei minatori, vissuta come momento collettivo di profondo rispetto."
+    },
+    {
+      "data": "6 Marzo 2026",
+      "titolo": "Cuori di Carbone incontra... Roberta Sorgato",
+      "luogo": "Paludo di Latisana (UD)",
+      "descrizione": "Un viaggio dentro la memoria guidato dalle parole e dalle testimonianze di chi la porta dentro da sempre."
+    },
+    {
+      "data": "16 Aprile 2026",
+      "titolo": "Presentazione 'I Minatori Italiani in Belgio'",
+      "luogo": "Oratorio di Pradipozzo",
+      "descrizione": "Omaggio ai fondatori dell'Europa Unita nel contesto dell'80° anniversario del protocollo italo-belga del 1946."
+    }
+  ],
+  "testimonianze_extra": [
+    {
+      "autore": "Vittorio Z.",
+      "ruolo": "Nipote di un minatore di San Giorgio di Nogaro",
+      "testo": "Ogni punto sulla mappa non è solo un luogo, ma un frammento di vita: nomi, testimonianze e racconti che meritano di restare."
+    },
+    {
+      "autore": "Redazione (Le donne del carbone)",
+      "ruolo": "Mogli, madri e figlie",
+      "testo": "Non scendevano nei pozzi, ma vivevano nell'attesa. Respiravano la stessa polvere dei minatori, tra lettere e speranze appese a un filo."
+    }
+  ]
+}
