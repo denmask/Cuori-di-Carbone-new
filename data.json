@@ -1,67 +1,144 @@
 {
-  "site_metadata": {
-    "title": "Cuori di Carbone",
-    "subtitle": "Storia di Fatica e Speranza tra le profondità delle Miniere Belghe",
-    "description": "Un progetto corale nato per tutelare gli ex minatori italiani e le loro famiglie, custodendo una memoria collettiva che appartiene alla storia dell'emigrazione."
+  "navigation": [
+    { "id": "home", "label": "Home" },
+    { "id": "chi-siamo", "label": "CHI SIAMO" },
+    { "id": "i-nostri-minatori", "label": "I NOSTRI MINATORI" },
+    { "id": "eventi", "label": "EVENTI" },
+    { "id": "curiosi-di-carbone", "label": "CURIOSI DI CARBONE" }
+  ],
+  "home": {
+    "title": "Benvenuti a Cuori di Carbone",
+    "description": "Cuori di Carbone è un progetto di memoria e divulgazione dedicato ai minatori italiani emigrati in Belgio nel secondo dopoguerra. Nato da una storia di famiglia e avviato il 15 maggio 2025, raccoglie testimonianze, ricostruisce percorsi di vita e custodisce una memoria collettiva che appartiene alle famiglie, al territorio e alla storia dell’emigrazione.",
+    "stats": [
+      { "value": "400+", "label": "MINATORI IN ARCHIVIO" },
+      { "value": "125+", "label": "STORIE RECUPERATE" },
+      { "value": "5", "label": "EVENTI REALIZZATI" },
+      { "value": "500+", "label": "PRESENZE AGLI EVENTI" }
+    ],
+    "origine": {
+      "tag": "ALL’ORIGINE DEL PROGETTO",
+      "title": "Da una storia di famiglia nasce un progetto di memoria",
+      "text": "All’origine di Cuori di Carbone c’e’ la storia di Dolorino Campagnolo, minatore della Bassa Friulana emigrato in Belgio nel secondo dopoguerra. Il suo percorso, intrecciato a quello di molti altri uomini del territorio, ha dato inizio a un lavoro di ricerca e restituzione che continua a trasformare la memoria familiare in memoria collettiva.",
+      "image": "image_7c5811.png"
+    },
+    "cammino_intro": {
+      "title": "Il Nostro Cammino",
+      "text": "Il progetto Cuori di Carbone continua il suo percorso, tra incontri, tappe e momenti di memoria dedicati alla storia dei minatori e alla valorizzazione del territorio. Un percorso fatto di persone, testimonianze ed esperienze che, evento dopo evento, mantiene viva la memoria e guarda al futuro con consapevolezza e partecipazione."
+    }
   },
-  "stats": [
-    { "value": "480+", "label": "Minatori in Archivio" },
-    { "value": "125+", "label": "Storie Recuperate" },
-    { "value": "344", "label": "Identificati con Successo" },
-    { "value": "136", "label": "In Fase di Identificazione" }
-  ],
-  "minatori_highlights": [
+  "chi_siamo": {
+    "title": "Chi Siamo",
+    "subtitle": "Un progetto corale fatto di memoria, studio, volontariato e legami familiari.",
+    "founder": {
+      "name": "Andrea Campagnolo",
+      "role": "Ideatore e curatore del progetto",
+      "image": "image_7c5cc6.jpg",
+      "bio": "Classe 2005, Andrea, nipote di un minatore emigrato in Belgio nel secondo dopoguerra, è un ex studente dello IAL FVG. La sua esperienza personale e familiare lo ha portato a interrogarsi sulla storia dell’emigrazione mineraria italiana, trasformando un ricordo intimo e privato in un percorso collettivo di memoria e valorizzazione storica. Nato inizialmente come un semplice appunto in ambito scolastico, il suo lavoro si è progressivamente sviluppato in un progetto strutturato, capace di coinvolgere famiglie, associazioni culturali e istituzioni del territorio. Attraverso ricerca storica, raccolta di testimonianze, documenti e oggetti, Andrea ha contribuito a restituire voce e dignità a una generazione di lavoratori spesso dimenticata. Il progetto, culminato nella realizzazione di una mostra e di attività divulgative, rappresenta oggi un esempio di come la memoria familiare possa diventare memoria condivisa, strumento di conoscenza e occasione di dialogo tra generazioni."
+    },
+    "association": {
+      "title": "A.I.E.M. – Associazione Italiana Ex Minatori",
+      "text": "L’Associazione Italiana Ex Minatori è il braccio destro del progetto Cuori di Carbone, affiancando nell’organizzazione di eventi, gite, laboratori e iniziative culturali per valorizzare la memoria dei minatori italiani e delle comunità minerarie. Fondata nel 1961 a Fratta di Caneva (Pordenone) da Arduino Martinuzzo, appena rientratore in Italia dopo sedici anni trascorsi nelle miniere belghe, l’A.I.E.M. nasce con l’obiettivo di tutelare gli ex minatori italiani e le loro famiglie e di preservare la memoria di un’esperienza umana e lavorativa straordinaria e drammatica."
+    }
+  },
+  "i_nostri-minatori": {
+    "title": "I Nostri Minatori",
+    "subtitle": "L'Archivio Storico d'Identificazione",
+    "text": "Questa sezione raccoglie le schede anagrafiche, le fotografie d'epoca e i percorsi di vita dei minatori censiti e identificati. Un lavoro costante di ricerca documentale per dare un nome e un volto a chi ha vissuto l'esperienza del sottosuolo.",
+    "placeholder_image": "image_7c5469.png"
+  },
+  "eventi": [
     {
-      "id": "dolorino-campagnolo",
-      "nome": "Dolorino Campagnolo",
-      "regione": "Friuli-Venezia Giulia",
-      "storia_breve": "Una delle storie all'origine del progetto. Il suo percorso, intrecciato a quello di molti altri uomini, ha dato inizio a questa ricerca.",
-      "immagine": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=600"
+      "date": "15 maggio 2025",
+      "title": "Cuori di Carbone – Storia di Fatica e Speranza tra le profondita’ delle Miniere Belghe",
+      "description": "Evento inaugurale del progetto, punto di partenza di un percorso di memoria e condivisione.",
+      "location": "Latisana (UD)"
     },
     {
-      "id": "mario-todeschi",
-      "nome": "Mario Todeschi",
-      "regione": "Trentino-Alto Adige",
-      "storia_breve": "Trento. Tra sacrificio, emigrazione e speranza, la storia di un uomo partito verso il Belgio in cerca di un futuro migliore.",
-      "immagine": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600"
+      "date": "14 dicembre 2025",
+      "title": "1ª Cerimonia di Santa Barbara",
+      "description": "Inizio di una tradizione dedicata alla memoria dei minatori e al loro legame con il territorio.",
+      "location": "Latisana (UD)"
+    },
+    {
+      "date": "9 febbraio 2026",
+      "title": "Intervista radiofonica a Radio Spazio",
+      "description": "Il progetto approda al programma radiofonico “Cjargne”, dando voce a due ex minatori del 1936 insieme a Franco Iacob, presidente dell’Ente Friuli nel Mondo.",
+      "location": "Udine (UD)"
+    },
+    {
+      "date": "6 marzo 2026",
+      "title": "Cuori di Carbone incontra… Roberta Sorgato – Parole che Raccontano la Memoria",
+      "description": "Primo appuntamento di incontri nelle piccole comunita’, tra memoria, parole e territorio con ospite Roberta Sorgato, autrice del romanzo “Cuori nel Pozzo” e figlia di un minatore di Vignovo (VE).",
+      "location": "Paludo di Latisana (UD)"
+    },
+    {
+      "date": "16 aprile 2026",
+      "title": "Presentazione progetto “I MINATORI ITALIANI IN BELGIO – Omaggio ai fondatori dell’Europa Unita”",
+      "description": "Presentazione di un progetto in ricordo dei minatori del mandamento Portogruarese e dintorni.",
+      "location": "Pradipozzo di Portogruaro (VE)"
+    },
+    {
+      "date": "18 aprile 2026",
+      "title": "Cuori di Carbone in Viaggio nella Memoria",
+      "description": "Prima delle tante esperienze sul campo per vivere e comprendere da vicino la realta’ mineraria.",
+      "location": "Cave del Predil, Tarvisio (UD)"
+    },
+    {
+      "date": "Oggi",
+      "title": "Un progetto in continua evoluzione",
+      "description": "Il cammino prosegue con nuove iniziative, collaborazioni e racconti.",
+      "location": "In divenire"
     }
   ],
-  "timeline_eventi": [
+  "curiosi_di_carbone": {
+    "title": "Curiosi di Carbone",
+    "subtitle": "Dal Sottosuolo della Memoria",
+    "description": "Curiosi di Carbone è uno spazio digitale di Cuori di Carbone: tra curiosità, storie e dettagli nascosti, alla scoperta del mondo dei minatori e della loro memoria. Un luogo in cui approfondire aspetti poco conosciuti, conoscere da vicino la vita in miniera e riscoprire il valore umano e storico di queste esperienze. Un invito a guardare al passato con attenzione, per comprenderne il significato anche nel presente.",
+    "articles": [
+      {
+        "title": "A tre mesi dalla prima uscita radiofonica: “Cuori di Carbone” ospite a ‘Cjargne’ su Radio Spazio",
+        "author": "Redazione di Cuori di Carbone",
+        "date": "8 Maggio 2026",
+        "excerpt": "Nella mattinata del 9 febbraio 2026, il progetto culturale “Cuori di Carbone” è stato ospite del programma radiofonico Cjargne, in onda su Radio Spazio, durante la puntata speciale intitolata “Miniere e Minatori”, condotta da Novella Del Fabbro."
+      },
+      {
+        "title": "Where the memory takes voice: “Cuori di Carbone incontra… Roberta Sorgato”",
+        "author": "Redazione di Cuori di Carbone",
+        "date": "8 Marzo 2026",
+        "excerpt": "Paludo di Latisana, 6 marzo 2026 – Non è stata solo una presentazione, né un semplice incontro culturale. La serata organizzata nell’ambito del format Cuori di Carbone incontra… si è trasformata in qualcosa di più profondo..."
+      },
+      {
+        "title": "Nasce “Cuori di Carbone incontra…”: un nuovo ciclo di appuntamenti per custodire la memoria dei minatori",
+        "author": "Redazione di Cuori di Carbone",
+        "date": "14 Febbraio 2026",
+        "excerpt": "Debutta “Cuori di Carbone incontra…”: al via un nuovo percorso culturale sulla memoria dei minatori. Il 6 marzo 2026 primo appuntamento con Roberta Sorgato all’Osteria Salmaso di Paludo di Latisana."
+      }
+    ]
+  },
+  "diario_emigrante": [
     {
-      "data": "15 Maggio 2025",
-      "titolo": "Lancio del Progetto e Convegno",
-      "luogo": "Latisana (UD) – Ex Stazione Ippica",
-      "descrizione": "Un evento dedicato alla memoria dei minatori italiani emigrati in Belgio, tra testimonianze, mostra storica e oggetti d'epoca."
+      "text": "Figlia e nipoti di Ugo Ciprian, ex minatore, mancato nel 2009. Grazie ad Andrea per aver insegnato a ricordare sempre i nostri cari.",
+      "author": "Famiglia Ciprian di Paludo di Latisana (UD)",
+      "context": "Cuori di Carbone – Storia di Fatica e Speranza tra le profondità delle Miniere Belghe",
+      "date": "15 maggio 2025 – Latisana (UD)"
     },
     {
-      "data": "14 Dicembre 2025",
-      "titolo": "1ª Cerimonia di Santa Barbara",
-      "luogo": "Latisana (UD)",
-      "descrizione": "Prima celebrazione ufficiale dedicata alla patrona dei minatori, vissuta come momento collettivo di profondo rispetto."
+      "text": "Se oggi siamo qui è anche grazie ai sacrifici dei nostri papà.",
+      "author": "Famiglia Castellani di Ronchis (UD)",
+      "context": "Cuori di Carbone – Storia di Fatica e Speranza tra le profondità delle Miniere Belghe",
+      "date": "15 maggio 2025 – Latisana (UD)"
     },
     {
-      "data": "6 Marzo 2026",
-      "titolo": "Cuori di Carbone incontra... Roberta Sorgato",
-      "luogo": "Paludo di Latisana (UD)",
-      "descrizione": "Un viaggio dentro la memoria guidato dalle parole e dalle testimonianze di chi la porta dentro da sempre."
+      "text": "Un ringraziamento di cuore ad Andrea Campagnolo che è venuto a visitare la miniera di Raibl assieme al suo numeroso gruppo di familiari di minatori e non!",
+      "author": "Gianni S., presidente dell'Associazione Minatori Raibl",
+      "context": "Cuori di Carbone in Viaggio nella Memoria",
+      "date": "18 aprile 2026 – Cave del Predil, Tarvisio (UD)"
     },
     {
-      "data": "16 Aprile 2026",
-      "titolo": "Presentazione 'I Minatori Italiani in Belgio'",
-      "luogo": "Oratorio di Pradipozzo",
-      "descrizione": "Omaggio ai fondatori dell'Europa Unita nel contesto dell'80° anniversario del protocollo italo-belga del 1946."
-    }
-  ],
-  "testimonianze_extra": [
-    {
-      "autore": "Vittorio Z.",
-      "ruolo": "Nipote di un minatore di San Giorgio di Nogaro",
-      "testo": "Ogni punto sulla mappa non è solo un luogo, ma un frammento di vita: nomi, testimonianze e racconti che meritano di restare."
-    },
-    {
-      "autore": "Redazione (Le donne del carbone)",
-      "ruolo": "Mogli, madri e figlie",
-      "testo": "Non scendevano nei pozzi, ma vivevano nell'attesa. Respiravano la stessa polvere dei minatori, tra lettere e speranze appese a un filo."
+      "text": "Un sentito grazie per non farci sentire soli e sole. Avanti così, e in bocca al lupo per tutto!",
+      "author": "Antea P., nipote di un minatore di Merlana di Trivignano Udinese (UD)",
+      "context": "Cuori di Carbone incontra… Roberta Sorgato - Parole che Raccontano la Memoria",
+      "date": "6 marzo 2026 – Paludo di Latisana (UD)"
     }
   ]
 }
