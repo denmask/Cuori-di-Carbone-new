@@ -1,62 +1,65 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuori di Carbone | Memoria Indelebile</title>
+    <title>Cuori di Carbone</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Sfondo Animato Polvere Mineraria -->
-    <div class="coal-dust-particles"></div>
-
-    <!-- Barra di Navigazione -->
     <header class="navbar">
         <div class="logo-area">
             <img src="image_7c586a.jpg" alt="Logo Cuori di Carbone" class="main-logo-img">
         </div>
-        <nav class="nav-menu" id="main-nav">
-            <!-- Generato Dinamicamente -->
-        </nav>
-        <button class="btn-cta-nav">CONTATTACI</button>
+        <nav class="nav-menu" id="main-nav"></nav>
+        <div class="nav-actions">
+            <button id="theme-toggle-btn" class="theme-toggle-btn">
+                <span class="icon-sun">☀️ Chiaro</span>
+                <span class="icon-moon">🌙 Scuro</span>
+            </button>
+            <button class="btn-cta-nav">CONTATTACI</button>
+        </div>
     </header>
 
-    <!-- Contenitore Principale Viste SPA -->
-    <main id="view-container" class="view-animate">
-        <!-- Il rispettivo codice della pagina viene iniettato qui da app.js -->
-    </main>
+    <main id="view-container"></main>
 
-    <!-- Sezione Invito & Diario dell'Emigrante (Sempre visibile in fondo alle pagine principali) -->
     <section class="global-diario-section">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header-center">
                 <h2>Il Diario dell’Emigrante</h2>
                 <p class="subtitle">Le voci di chi ha partecipato a Cuori di Carbone</p>
                 <div class="line-divider"></div>
             </div>
-            <div class="diario-slider" id="diario-container">
-                <!-- Iniettato da JS -->
+            <div class="diario-slider" id="diario-container"></div>
+            <div class="cammino-footer-cta">
+                <p class="memoria-vive-txt">La memoria vive quando viene condivisa. Cuori di Carbone continua il suo cammino grazie alle storie, ai ricordi e alle persone che scelgono di farne parte.</p>
             </div>
         </div>
     </section>
 
-    <!-- Footer Istituzionale Corretto -->
     <footer class="footer-site">
         <div class="container footer-grid">
             <div class="footer-info">
-                <p><strong>Cuori di Carbone</strong> è un progetto di memoria e divulgazione dedicato ai minatori italiani emigrati in Belgio nel secondo dopoguerra. Nato da una storia di famiglia e avviato il 15 maggio 2025, raccoglie testimonianze, ricostruisce percorsi di vita e custodisce una memoria collettiva che appartiene alle famiglie, al territorio e alla storia dell’emigrazione.</p>
+                <p><em>Cuori di Carbone</em> è un progetto di memoria e divulgazione dedicato ai minatori italiani emigrati in Belgio nel secondo dopoguerra. Nato da una storia di famiglia e avviato il 15 maggio 2025, raccoglie testimonianze, ricostruisce percorsi di vita e custodisce una memoria collettiva che appartiene alle famiglie, al territorio e alla storia dell’emigrazione.</p>
             </div>
-            <div class="footer-social">
-                <a href="#" class="social-link">Facebook</a>
-                <a href="#" class="social-link">WhatsApp</a>
+            <div class="footer-links-nav">
+                <a href="#home">Home</a>
+                <a href="#chi-siamo">CHI SIAMO</a>
+                <a href="#i-nostri-minatori">I NOSTRI MINATORI</a>
+                <a href="#eventi">EVENTI</a>
+                <a href="#curiosi-di-carbone">CURIOSI DI CARBONE</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Cuori di Carbone. Designed with Heart & Pride.</p>
+            <div class="footer-social-icons">
+                <a href="#">🌐 Facebook</a>
+                <a href="#">💬 WhatsApp</a>
+            </div>
+            <p class="wp-credit">Designed with WordPress</p>
         </div>
     </footer>
 

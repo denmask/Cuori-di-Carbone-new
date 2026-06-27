@@ -1,176 +1,254 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Carica il database JSON globale
+    initThemeManager();
+
     fetch('data.json')
-        .then(response => response.json())
-        .then(data => {
-            initApp(data);
+        .then(response => {
+            if (!response.ok) throw new Error("File data.json non trovato.");
+            return response.json();
         })
-        .catch(err => console.error("Errore di inizializzazione dati:", err));
+        .then(data => {
+            buildApplication(data);
+        })
+        .catch(err => console.error("Errore caricamento dati:", err));
 });
 
-function initApp(data) {
+function initThemeManager() {
+    const toggleBtn = document.getElementById('theme-toggle-btn');
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+    toggleBtn.addEventListener('click', () => {
+        const activeTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+}
+
+function buildApplication(data) {
     const navContainer = document.getElementById('main-nav');
     
-    // Build delle voci menu originali ed esatte
-    data.navigation.forEach((item, index) => {
+    data.navigation.forEach((menuItem, index) => {
         const link = document.createElement('a');
-        link.href = `#${item.id}`;
-        link.innerText = item.label;
-        if(index === 0) link.className = 'active';
+        link.href = `#${menuItem.id}`;
+        link.innerText = menuItem.label;
+        if (index === 0) link.className = 'active';
         
         link.addEventListener('click', (e) => {
             e.preventDefault();
             document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
             link.classList.add('active');
-            renderView(item.id, data);
+            executeRouter(menuItem.id, data);
         });
         navContainer.appendChild(link);
     });
 
-    // Iniezione globale fissa dei dati del Diario dell'Emigrante
     const diarioContainer = document.getElementById('diario-container');
-    data.diario_emigrante.forEach(d => {
+    data.diario_emigrante.forEach(item => {
         diarioContainer.innerHTML += `
             <div class="diario-card">
-                <p>"${d.text}"</p>
-                <div class="diario-author">— ${d.author}</div>
-                <div class="diario-context">${d.context}</div>
-                <div class="diario-context" style="color:var(--color-amber);">${d.date}</div>
+                <p>"${item.text}"</p>
+                <div class="diario-author">— ${item.author}</div>
+                <div style="font-size:0.75rem; color:var(--color-text-muted); margin-top:4px;">${item.context} (${item.date})</div>
             </div>
         `;
     });
 
-    // Carica la Home view di default
-    renderView('home', data);
+    document.querySelectorAll('.footer-links-nav a').forEach(footerLink => {
+        footerLink.addEventListener('click', (e) => {
+            const targetId = footerLink.getAttribute('href').replace('#', '');
+            const matchingNav = Array.from(document.querySelectorAll('.nav-menu a')).find(a => a.getAttribute('href') === `#${targetId}`);
+            if (matchingNav) {
+                document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
+                matchingNav.classList.add('active');
+            }
+            executeRouter(targetId, data);
+        });
+    });
+
+    executeRouter('home', data);
 }
 
-function renderView(viewId, data) {
+function executeRouter(viewId, data) {
     const mainContainer = document.getElementById('view-container');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     
-    // Reset classe animazione per triggerare l'effetto a ogni cambio pagina
-    mainContainer.classList.remove('view-animate');
-    void mainContainer.offsetWidth; // Trigger reflow
-    mainContainer.classList.add('view-animate');
-
     if (viewId === 'home') {
         let statsHTML = '';
         data.home.stats.forEach(s => {
             statsHTML += `
-                <div class="stat-box">
-                    <h3>${s.value}</h3>
-                    <p>${s.label}</p>
+                <div class="stat-item-box">
+                    <div class="num-val">${s.value}</div>
+                    <div class="lbl-txt">${s.label}</div>
                 </div>
             `;
         });
 
         mainContainer.innerHTML = `
-            <section class="container hero-home">
-                <h1>${data.home.title}</h1>
-                <p class="desc">${data.home.description}</p>
-                <div class="stats-row">${statsHTML}</div>
-                
-                <div class="origine-blocco">
-                    <div>
-                        <span class="tag-mini">${data.home.origine.tag}</span>
-                        <h2 style="font-family:var(--font-serif); margin:15px 0; font-size:2.2rem;">${data.home.origine.title}</h2>
-                        <p style="color:var(--color-text-muted);">${data.home.origine.text}</p>
-                    </div>
-                    <div>
-                        <img src="${data.home.origine.image}" class="origine-img" alt="Dolorino">
-                    </div>
+            <section class="container">
+                <div class="hero-home-section">
+                    <h1>${data.home.title}</h1>
+                    <p>${data.home.description}</p>
                 </div>
-
-                <div style="text-align:center; margin-top:100px;">
-                    <h2 class="page-title">${data.home.cammino_intro.title}</h2>
-                    <p style="max-width:700px; margin:20px auto; color:var(--color-text-muted);">${data.home.cammino_intro.text}</p>
+                <div class="stats-row-grid">${statsHTML}</div>
+                
+                <div class="founder-block" style="margin-top:70px;">
+                    <div>
+                        <img src="${data.home.origine.image}" class="founder-img" alt="Origine">
+                    </div>
+                    <div>
+                        <span style="color:var(--color-amber); font-size:0.8rem; font-weight:700; letter-spacing:1px;">${data.home.origine.tag}</span>
+                        <h2 style="font-size:2rem; margin:10px 0;">${data.home.origine.title}</h2>
+                        <p style="color:var(--color-text-muted); font-size:0.95rem;">${data.home.origine.text}</p>
+                    </div>
                 </div>
             </section>
         `;
     } 
-    
     else if (viewId === 'chi-siamo') {
         mainContainer.innerHTML = `
             <section class="container">
-                <h1 class="page-title">${data.chi_siamo.title}</h1>
-                <p class="page-subtitle">${data.chi_siamo.subtitle}</p>
-                <div class="line-divider"></div>
-
+                <h1 style="font-size:3rem; margin-bottom:10px;">${data.chi_siamo.title}</h1>
+                <p style="color:var(--color-amber); font-weight:600; margin-bottom:30px;">${data.chi_siamo.subtitle}</p>
+                
                 <div class="founder-block">
                     <div>
-                        <img src="${data.chi_siamo.founder.image}" class="founder-img" alt="${data.chi_siamo.founder.name}">
+                        <img src="${data.chi_siamo.founder.image}" class="founder-img" alt="Andrea">
                     </div>
                     <div>
-                        <h2 style="font-family:var(--font-serif); font-size:2.5rem;">${data.chi_siamo.founder.name}</h2>
-                        <h4 style="color:var(--color-amber); margin-bottom:20px;">${data.chi_siamo.founder.role}</h4>
+                        <h2 style="font-size:2rem; margin-bottom:5px;">${data.chi_siamo.founder.name}</h2>
+                        <h4 style="color:var(--color-text-muted); margin-bottom:15px;">${data.chi_siamo.founder.role}</h4>
                         <p style="color:var(--color-text-muted); font-size:0.95rem;">${data.chi_siamo.founder.bio}</p>
                     </div>
                 </div>
 
                 <div class="association-box">
-                    <h2 style="font-family:var(--font-serif); font-size:2rem; margin-bottom:20px;">${data.chi_siamo.association.title}</h2>
-                    <p style="color:var(--color-text-muted); max-width:900px; margin:0 auto;">${data.chi_siamo.association.text}</p>
+                    <h2 style="font-size:1.8rem; margin-bottom:15px;">${data.chi_siamo.association.title}</h2>
+                    <p style="color:var(--color-text-muted); font-size:0.95rem;">${data.chi_siamo.association.text}</p>
                 </div>
             </section>
         `;
     } 
-    
     else if (viewId === 'i-nostri-minatori') {
-        mainContainer.innerHTML = `
-            <section class="container" style="text-align:center;">
-                <h1 class="page-title">${data.i_nostri_minatori.title}</h1>
-                <p class="page-subtitle">${data.i_nostri_minatori.subtitle}</p>
-                <div class="line-divider"></div>
-                <p style="max-width:700px; margin: 0 auto 40px auto; color:var(--color-text-muted);">${data.i_nostri_minatori.text}</p>
-                <img src="${data.i_nostri_minatori.placeholder_image}" style="max-width:100%; border-radius:8px; filter:grayscale(100%); opacity:0.7;" alt="Minatori">
-            </section>
-        `;
-    } 
-    
-    else if (viewId === 'eventi') {
-        let eventiHTML = '';
-        data.eventi.forEach(e => {
-            eventiHTML += `
-                <div class="timeline-card">
-                    <span class="timeline-date">${e.date}</span>
-                    <div class="timeline-location">${e.location}</div>
-                    <h3 style="font-family:var(--font-serif); font-size:1.4rem; margin-bottom:10px;">${e.title}</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.95rem;">${e.description}</p>
-                </div>
-            `;
+        const mData = data.i_nostri_minatori;
+        let regioniHTML = '';
+        mData.statistiche.regioni.forEach(r => {
+            regioniHTML += `<div class="region-tag-pill">${r.nome} <span>(${r.conteggio})</span></div>`;
         });
 
         mainContainer.innerHTML = `
             <section class="container">
-                <h1 class="page-title">Eventi & Iniziative</h1>
-                <p class="page-subtitle">Il cammino cronologico della memoria</p>
-                <div class="line-divider"></div>
-                <div class="timeline-container">${eventiHTML}</div>
-            </section>
-        `;
-    } 
-    
-    else if (viewId === 'curiosi-di-carbone') {
-        let blogHTML = '';
-        data.curiosi_di_carbone.articles.forEach(a => {
-            blogHTML += `
-                <div class="blog-card">
-                    <div>
-                        <div class="blog-meta">${a.date} | da ${a.author}</div>
-                        <h3 style="font-family:var(--font-serif); margin-bottom:15px; font-size:1.3rem; line-height:1.3;">${a.title}</h3>
-                        <p style="color:var(--color-text-muted); font-size:0.9rem;">${a.excerpt}</p>
+                <h1 style="font-size:3rem; text-align:center; margin-bottom:40px;">${mData.title}</h1>
+                
+                <div class="minatore-day-card">
+                    <div class="minatore-day-img-box"></div>
+                    <div class="minatore-day-content">
+                        <span class="badge-day">${mData.minatore_del_giorno.label}</span>
+                        <h2>${mData.minatore_del_giorno.name}</h2>
+                        <div class="origin-tag">${mData.minatore_del_giorno.origin}</div>
+                        <p style="font-size:0.95rem; line-height:1.6;">${mData.minatore_del_giorno.text}</p>
                     </div>
-                    <a href="#" style="color:var(--color-amber); text-decoration:none; font-weight:700; font-size:0.85rem; margin-top:20px; display:inline-block;">LEGGI ARTICOLO →</a>
+                </div>
+
+                <div style="text-align:center; margin:50px 0;">
+                    <h2>${mData.subtitle}</h2>
+                    <p style="max-width:700px; margin:15px auto; color:var(--color-text-muted);">${mData.intro_text}</p>
+                </div>
+
+                <div class="stats-panel-white">
+                    <div style="font-size:0.8rem; font-weight:700; opacity:0.8;">MINATORI ATTUALMENTE RITROVATI</div>
+                    <div class="big-counter">${mData.statistiche.totale}</div>
+                    <div style="margin-bottom:20px; font-size:0.9rem;">Identificati: <strong>${mData.statistiche.identificati}</strong> | Non identificati: <strong>${mData.statistiche.non_identificati}</strong></div>
+                    <div class="regions-flex-wrap">${regioniHTML}</div>
+                </div>
+
+                <div style="text-align:center; margin-top:50px;">
+                    <p style="max-width:700px; margin:0 auto 30px auto; color:var(--color-text-muted);">${mData.sub_text}</p>
+                    <div class="map-visualization-box">
+                        <img src="${mData.mappa_immagine}" alt="Mappa">
+                    </div>
+                </div>
+            </section>
+        `;
+    } 
+    else if (viewId === 'eventi') {
+        const ePage = data.eventi_page;
+        let catesHTML = '';
+        
+        ePage.categorie.forEach((cat, index) => {
+            const isReversed = index % 2 !== 0 ? 'reversed' : '';
+            const btnClass = cat.button_type === 'green' ? 'btn-evt-green' : 'btn-evt-dark';
+            
+            catesHTML += `
+                <div class="evento-row-item ${isReversed}">
+                    <div class="evento-text-col">
+                        <h2>${cat.title}</h2>
+                        <p>${cat.text}</p>
+                        <div>
+                            <a href="#" class="btn-evt ${btnClass}">${cat.button_text}</a>
+                        </div>
+                    </div>
+                    <div class="evento-image-col">
+                        <img src="${cat.image}" alt="${cat.title}">
+                    </div>
                 </div>
             `;
         });
 
         mainContainer.innerHTML = `
             <section class="container">
-                <h1 class="page-title">${data.curiosi_di_carbone.title}</h1>
-                <p class="page-subtitle">${data.curiosi_di_carbone.subtitle}</p>
-                <div class="line-divider"></div>
-                <p style="max-width:800px; text-align:center; margin:0 auto 60px auto; color:var(--color-text-muted);">${data.curiosi_di_carbone.description}</p>
-                <div class="blog-grid">${blogHTML}</div>
+                <div class="eventi-intro-head">
+                    <h1>${ePage.title}</h1>
+                    <p>${ePage.description}</p>
+                </div>
+                <div class="eventi-alternating-container">
+                    ${catesHTML}
+                </div>
+            </section>
+        `;
+    } 
+    else if (viewId === 'curiosi-di-carbone') {
+        const cData = data.curiosi_di_carbone;
+        let sezioniHTML = '';
+
+        cData.sezioni.forEach(sezione => {
+            let articoliHTML = '';
+            sezione.articoli.forEach(art => {
+                articoliHTML += `
+                    <div class="blog-card">
+                        <div>
+                            <div class="blog-card-meta">${art.date} — di ${art.author}</div>
+                            <h3>${art.title}</h3>
+                            <p>${art.excerpt}</p>
+                        </div>
+                        <button class="blog-readmore-btn">Leggi di più</button>
+                    </div>
+                `;
+            });
+
+            sezioniHTML += `
+                <div class="blog-group-wrapper">
+                    <div class="blog-group-header">
+                        <h2>${sezione.titolo_sezione}</h2>
+                        <p>${sezione.sottotitolo_sezione}</p>
+                    </div>
+                    <div class="blog-grid">
+                        ${articoliHTML}
+                    </div>
+                </div>
+            `;
+        });
+
+        mainContainer.innerHTML = `
+            <section class="container">
+                <div class="blog-section-title-block">
+                    <div class="sub">${cData.subtitle}</div>
+                    <h1>${cData.title}</h1>
+                    <p class="disclaimer">${cData.description}</p>
+                </div>
+                ${sezioniHTML}
             </section>
         `;
     }
