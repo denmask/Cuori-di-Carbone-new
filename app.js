@@ -94,13 +94,7 @@ function fixImagePath(path) {
         cleanPath = 'images/' + cleanPath;
     }
 
-    // GESTIONE AUTOMATICA AMBIENTE: GitHub Pages vs Live Server (locale)
-    if (window.location.hostname.includes('github.io')) {
-        // Forza l'uso della sottocartella assoluta richiesta dai server di GitHub Pages
-        return '/Cuori-di-Carbone-new/' + cleanPath;
-    }
-
-    // Percorso relativo pulito per il Live Server locale di VS Code
+    // Percorso relativo: funziona sia su GitHub Pages che su Live Server locale
     return './' + cleanPath;
 }
 
