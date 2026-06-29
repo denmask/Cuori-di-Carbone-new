@@ -49,60 +49,62 @@ function initThemeManager() {
     });
 }
 
-// Funzione potenziata per la correzione e la normalizzazione dei percorsi delle immagini
+// Funzione radicale di correzione percorsi
 function fixImagePath(path) {
     if (!path) return '';
     
-    // Se è un link esterno assoluto, non toccarlo
     if (path.startsWith('http://') || path.startsWith('https://')) {
         return path;
     }
 
-    // Pulisce eventuali slash o punti iniziali ridondanti
     let cleanPath = path.trim();
+    
+    // Rimuove peezzi iniziali ripetitivi o errati
     if (cleanPath.startsWith('./')) cleanPath = cleanPath.slice(2);
     if (cleanPath.startsWith('/')) cleanPath = cleanPath.slice(1);
 
-    // Se l'immagine non include già la cartella 'images/', la aggiungiamo
+    // Forza l'inserimento della sottocartella images se manca dal nome file
     if (!cleanPath.startsWith('images/')) {
         cleanPath = 'images/' + cleanPath;
     }
 
-    // Restituisce il percorso relativo locale perfetto per GitHub Pages
     return './' + cleanPath;
 }
 
 function buildApplication(data) {
     const navContainer = document.getElementById('main-nav');
-    navContainer.innerHTML = ''; 
-    
-    data.navigation.forEach((menuItem, index) => {
-        const link = document.createElement('a');
-        link.href = `#${menuItem.id}`;
-        link.innerText = menuItem.label;
-        if (index === 0) link.className = 'active';
-        
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
-            link.classList.add('active');
-            executeRouter(menuItem.id, data);
+    if (navContainer) {
+        navContainer.innerHTML = ''; 
+        data.navigation.forEach((menuItem, index) => {
+            const link = document.createElement('a');
+            link.href = `#${menuItem.id}`;
+            link.innerText = menuItem.label;
+            if (index === 0) link.className = 'active';
+            
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
+                link.classList.add('active');
+                executeRouter(menuItem.id, data);
+            });
+            navContainer.appendChild(link);
         });
-        navContainer.appendChild(link);
-    });
+    }
 
     const diarioContainer = document.getElementById('diario-container');
-    diarioContainer.innerHTML = ''; 
-    data.diario_emigrante.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'diario-card';
-        card.innerHTML = `
-            <p>"${item.text}"</p>
-            <div class="diario-author">— ${item.author}</div>
-            <div style="font-size:0.75rem; color:var(--color-text-muted); margin-top:4px;">${item.context} (${item.date})</div>
-        `;
-        diarioContainer.appendChild(card);
-    });
+    if (diarioContainer) {
+        diarioContainer.innerHTML = ''; 
+        data.diario_emigrante.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'diario-card';
+            card.innerHTML = `
+                <p>"${item.text}"</p>
+                <div class="diario-author">— ${item.author}</div>
+                <div style="font-size:0.75rem; color:var(--color-text-muted); margin-top:4px;">${item.context} (${item.date})</div>
+            `;
+            diarioContainer.appendChild(card);
+        });
+    }
 
     document.querySelectorAll('.footer-links-nav a').forEach(footerLink => {
         footerLink.addEventListener('click', (e) => {
@@ -121,6 +123,8 @@ function buildApplication(data) {
 
 function executeRouter(viewId, data) {
     const mainContainer = document.getElementById('view-container');
+    if (!mainContainer) return;
+    
     window.scrollTo({ top: 0, behavior: 'smooth' });
     
     if (viewId === 'home') {
@@ -183,7 +187,7 @@ function executeRouter(viewId, data) {
         const mData = data.i_nostri_minatori;
         let regioniHTML = '';
         mData.statistiche.regioni.forEach(r => {
-            regionsHTML += `<div class="region-tag-pill">${r.nome} <span>(${r.conteggio})</span></div>`;
+            regioniHTML += `<div class="region-tag-pill">${r.nome} <span>(${r.conteggio})</span></div>`;
         });
 
         mainContainer.innerHTML = `
@@ -209,7 +213,7 @@ function executeRouter(viewId, data) {
                     <div style="font-size:0.8rem; font-weight:700; opacity:0.8;">MINATORI ATTUALMENTE RITROVATI</div>
                     <div class="big-counter">${mData.statistiche.totale}</div>
                     <div style="margin-bottom:20px; font-size:0.9rem;">Identificati: <strong>${mData.statistiche.identificati}</strong> | Non identificati: <strong>${mData.statistiche.non_identificati}</strong></div>
-                    <div class="regions-flex-wrap">${regionsHTML}</div>
+                    <div class="regions-flex-wrap">${regioniHTML}</div>
                 </div>
 
                 <div style="text-align:center; margin-top:50px;">
