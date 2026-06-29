@@ -19,7 +19,7 @@
       "tag": "ALL'ORIGINE DEL PROGETTO",
       "title": "Da una storia di famiglia nasce un progetto di memoria",
       "text": "All'origine di Cuori di Carbone c'e' la storia di Dolorino Campagnolo, minatore della Bassa Friulana emigrato in Belgio nel secondo dopoguerra. Il suo percorso, intrecciato a quello di molti altri uomini del territorio, ha dato inizio a un lavoro di ricerca e restituzione che continua a trasformare la memoria familiare in memoria collettiva.",
-      "image": "image_7c5811.png"
+      "image": "images/image_7c5811.png"
     }
   },
   "chi_siamo": {
@@ -28,8 +28,8 @@
     "founder": {
       "name": "Andrea Campagnolo",
       "role": "Ideatore e curatore del progetto",
-      "image": "image_7c5cc6.jpg",
-      "bio": "Classe 2005, Andrea, nipote di un minatore emigrato in Belgio nel secondo dopoguerra, è un ex studente dello IAL FVG. La sua esperienza personale e familiare lo ha portato a interrogarsi sulla storia dell'emigrazione mineraria italiana, transforming un ricordo intimo e privato in un percorso collettivo di memoria e valorizzazione storica. Nato inizialmente come un semplice assunto in ambito scolastico, il suo lavoro si è progressivamente sviluppato in un progetto strutturato, capace di coinvolgere famiglie, associazioni culturali e istituzioni del territorio. Attraverso ricerca storica, raccolta di testimonianze, documenti e oggetti, Andrea ha contribuito a restituire voce e dignità a una generazione di lavoratori spesso dimenticata."
+      "image": "images/image_7c5cc6.jpg",
+      "bio": "Classe 2005, Andrea, nipote di un minatore emigrato in Belgio nel secondo dopoguerra, è un ex student dello IAL FVG. La sua esperienza personale e familiare lo ha portato a interrogarsi sulla storia dell'emigrazione mineraria italiana, transforming un ricordo intimo e privato in un percorso collettivo di memoria e valorizzazione storica. Nato inizialmente come un semplice assunto in ambito scolastico, il suo lavoro si è progressivamente sviluppato in un progetto strutturato, capace di coinvolgere famiglie, associazioni culturali e istituzioni del territorio. Attraverso ricerca storica, raccolta di testimonianze, documenti e oggetti, Andrea ha contribuito a restituire voce e dignità a una generation di lavoratori spesso dimenticata."
     },
     "association": {
       "title": "A.I.E.M. – Associazione Italiana Ex Minatori",
@@ -46,7 +46,7 @@
       "name": "Mario Todeschi",
       "origin": "TRENTO (TN)",
       "text": "Tra sacrificio, emigrazione e speranza, la storia di un uomo partito verso il Belgio in cerca di un futuro migliore.",
-      "image": "image_7cbac1.png"
+      "image": "images/image_7cbac1.png"
     },
     "statistiche": {
       "totale": 480,
@@ -67,7 +67,7 @@
         { "nome": "Valle d'Aosta", "conteggio": 1 }
       ]
     },
-    "mappa_immagine": "image_7cbd6c.png"
+    "mappa_immagine": "images/image_7cbd6c.png"
   },
   "eventi_page": {
     "title": "Eventi",
@@ -79,7 +79,7 @@
         "text": "Esposizioni fotografiche, documentarie e di oggetti originali che raccontano la storia dei minatori, dell'emigrazione e del lavoro nelle miniere attraverso immagini, testimonianze e materiali d'epoca.",
         "button_text": "SCOPRI",
         "button_type": "dark",
-        "image": "image_7ccd04.jpg"
+        "image": "images/image_7ccd04.jpg"
       },
       {
         "id": "convegni",
@@ -87,7 +87,7 @@
         "text": "Momenti di approfondimento e confronto dedicati alla storia dell'emigrazione mineraria, al lavoro e alla memoria, con interventi di studiosi, testimoni, associazioni e realtà del territorio.",
         "button_text": "ASCOLTA",
         "button_type": "green",
-        "image": "image_7ccd41.jpg"
+        "image": "images/image_7ccd41.jpg"
       },
       {
         "id": "cerimonie",
@@ -95,7 +95,7 @@
         "text": "Celebrazioni e commemorazioni dedicate ai minatori, come Santa Barbara e le ricorrenze legate alle tragedie minerarie, vissute come momenti collettivi di memoria e rispetto.",
         "button_text": "RICORDA",
         "button_type": "dark",
-        "image": "image_7ccd64.jpg"
+        "image": "images/image_7ccd64.jpg"
       },
       {
         "id": "gite",
@@ -103,7 +103,7 @@
         "text": "Visite guidate e viaggi nei luoghi simbolo della storia mineraria e dell'emigrazione, tra miniere, musei e territori che conservano le tracce di un passato di sacrificio e speranza.",
         "button_text": "VIAGGIA",
         "button_type": "green",
-        "image": "image_7ccd82.jpg"
+        "image": "images/image_7ccd82.jpg"
       },
       {
         "id": "incontri",
@@ -111,7 +111,7 @@
         "text": "Dialoghi, testimonianze e presentazioni che mettono al centro le persone e le loro storie, per l'ascolto e al confronto diretto.",
         "button_text": "PARTECIPA",
         "button_type": "dark",
-        "image": "image_7cd02b.jpg"
+        "image": "images/image_7cd02b.jpg"
       },
       {
         "id": "archivio",
@@ -119,7 +119,7 @@
         "text": "Raccolta delle iniziative e degli appuntamenti di Cuori di Carbone, dedicate alla memoria e alla valorizzazione della storia dei minatori.",
         "button_text": "ESPLORA",
         "button_type": "green",
-        "image": "image_7cd049.jpg"
+        "image": "images/image_7cd049.jpg"
       }
     ]
   },
@@ -129,7 +129,7 @@
     "description": "Un blog culturale e di approfondimento legato al progetto \"Cuori di Carbone\". I contenuti pubblicati hanno finalità divulgative e di memoria storica.",
     "sezioni": [
       {
-        "titolo_sezione": "Memorie e Orizzonti",
+        "title_sezione": "Memorie e Orizzonti",
         "sottotitolo_sezione": "Riflessioni, ricorrenze e memoria collettiva.",
         "articoli": [
           {
@@ -146,12 +146,12 @@
                 {
                   "heading": "Una celebrazione di memoria e comunità",
                   "text": "La cerimonia si è aperta con la Santa Messa, momento iniziale e centrale della giornata, alla quale hanno preso parte ex minatori, familiari, rappresentanti delle associazioni, autorità civili e numerosi cittadini. In chiesa erano presenti i gonfaloni dell'A.I.E.M. - Associazione Italiana Ex Minatori delle sezioni di Latisana, Palazzo dello Stella e Pradipozzo di Portogruaro, che hanno accompagnato la celebrazione rendendo visibilmente presente la storia dell'emigrazione mineraria. Assenti, ma simbolicamente ricordate, le sezioni dell'A.I.E.M. di San Michele al Tagliamento e Lignano Sabbiadoro.",
-                  "images": ["images/_DSC6481bis.jpg", "images/_DSC6486.JPG"]
+                  "images": ["images/_DSC6481bis.jpg", "images/_DSC6486.jpg"]
                 },
                 {
                   "heading": "La voce dei giovani e della memoria",
                   "text": "Un momento particolarmente significativo è stato il discorso di Andrea Campagnolo, nipote di minatore e curatore del progetto culturale Cuori di Carbone. Da tempo si occupa della valorizzazione e della raccolta delle storie legate ai minatori del territorio. La sua lettura della preghiera di Santa Barbara ha rappresentato un ponte tra passato e presente, tra le generazioni che hanno vissuto la fatica nelle miniere e quelle che oggi custodiscono e tramandano questa memoria.",
-                  "images": ["images/_DSC6459.JPG"]
+                  "images": ["images/_DSC6459.jpg"]
                 },
                 {
                   "heading": "Il corteo e l'omaggio ai minatori",
@@ -161,7 +161,7 @@
                 {
                   "heading": "Il monumento ai minatori e la deposizione delle corone",
                   "text": "Il momento conclusivo si è svolto presso il monumento dedicato ai minatori, dove si è tenuta la cerimonia commemorativa con la deposizione delle corone d'alloro. Alla presenza delle autorità civili, con il sindaco di Latisana, Lanfranco Sette, sottolineando il valore identitario e collective di questa memoria pentru la comunità locale.",
-                  "images": ["images/_DSC6555.jpeg"]
+                  "images": ["images/_DSC6555.jpg"]
                 },
                 {
                   "heading": "Un passo verso il futuro",
@@ -178,19 +178,19 @@
             "author": "Andrea Campagnolo",
             "category": "Memorie e Orizzonti",
             "excerpt": "L'Epifania segna la fine delle feste e il ritorno alla quotidianità. Per i minatori italiani emigrati in Belgio, però, non esistevano giorni diversi dagli altri: la miniera non si fermava e il freddo dell'inverno rendeva il lavoro nelle baracche ancora più duro.",
-            "image": "epifania_card.jpg",
+            "image": "images/epifania_card.jpg",
             "content": {
               "intro": "L'Epifania è un giorno di passaggio. Un giorno che segna una fine, ma anche un ritorno. Le luci si spengono, le tavole tornano vuote, gli addobbi vengono riposti. Si ricomincia.",
               "sections": [
                 {
                   "heading": "Il tempo che non si fermava",
                   "text": "Per i minatori italiani emigrati in Belgio, l'Epifania non aveva un volto particolare. Non era un giorno diverso dagli altri. Il lavoro in miniera non seguiva il ritmo delle feste. Sotto terra non c'erano calendari appesi al muro, né giorni segnati in rosso. C'erano solo turni, buio, polvere e silenzio. Mentre in superficie si smontavano i presepi e si tornava alla normalità, nelle gallerie il tempo era rimasto sempre lo stesso. Un tempo fatto di fatica quotidiana, di gesti ripetuti, di corpi che imparavano a resistere.",
-                  "images": ["epifania_1.jpg", "epifania_2.jpg"]
+                  "images": ["images/epifania_1.jpg", "images/epifania_2.jpg"]
                 },
                 {
                   "heading": "Le feste lontane da casa",
                   "text": "Per molti minatori, le feste erano soprattutto assenza. Assenza di casa. Assenza della famiglia. Assenza dei figli che crescevano lontano. L'Epifania arrivava spesso con una letter, con una foto piegata, con un pacco spedito dall'Italia. Piccoli segni che rompevano la monotonia dei giorni uguali. Un dolce che sapeva di casa. Un rosario. Una parola scritta con grafia incerta, ma piena di significato. Fra così che si teneva vivo il legame: attraverso la memoria, anche quando il corpo era lontano.",
-                  "images": ["minatori_famiglia.jpg"]
+                  "images": ["images/minatori_famiglia.jpg"]
                 },
                 {
                   "heading": "Epifania come rivelazione",
@@ -200,7 +200,7 @@
                 {
                   "heading": "La memoria come luce",
                   "text": "Quando le feste finiscono, resta il vuoto. Ma è proprio in quel vuoto che la memoria trova spazio. Ricordare i minatori significa non lasciare che la loro fatica scivoli nell'oblio. Significa riconoscere che dietro ogni turno, ogni numero, ogni tragedia, c'era una persona. Un padre. Un figlio. Un marito. Con Cuori di Carbone, questo progetto nasce proprio da qui: dal desiderio di trasformare la fatica in racconto, il silenzio in testimonianza, l'assenza in presenza.",
-                  "images": ["minatori_lavoro.jpg"]
+                  "images": ["images/minatori_lavoro.jpg"]
                 },
                 {
                   "heading": "Oggi, 6 gennaio",
@@ -217,7 +217,7 @@
             "author": "Redazione di Cuori di Carbone",
             "category": "Memorie e Orizzonti",
             "excerpt": "Latisana, Udine, 14 dicembre 2025 – Si è svolta a Latisana la prima cerimonia ufficiale dedicata a Santa Barbara, patrona dei minatori. Una giornata intensa e ricca di commozione che ha visto una grandissima partecipazione della cittadinanza.",
-            "image": "santa_barbara_card.jpg"
+            "image": "images/santa_barbara_card.jpg"
           },
           {
             "id": "donne-carbone",
@@ -226,7 +226,7 @@
             "author": "Andrea Campagnolo",
             "category": "Memorie e Orizzonti",
             "excerpt": "Non scendevano nei pozzi, ma vivevano nell'attesa. Le donne del carbone – mogli, madri e figlie – respiravano la stessa polvere dei minatori attraverso le lettere, i sacrifici quotidiani e la gestione di famiglie divise dall'emigrazione.",
-            "image": "donne_card.jpg"
+            "image": "images/donne_card.jpg"
           },
           {
             "id": "zolfo-sicilia",
@@ -235,7 +235,7 @@
             "author": "Andrea Campagnolo",
             "category": "Memorie e Orizzonti",
             "excerpt": "Un viaggio nelle viscere della Sicilia tra Ottocento e Novecento: la dura storia delle miniere di zolfo, lo sfruttamento dei bambini-carusi e di un intero popolo che cercava dignità lavorando nel buio più profondo.",
-            "image": "zolfo_card.jpg"
+            "image": "images/zolfo_card.jpg"
           },
           {
             "id": "mattarella-marcinelle",
@@ -244,12 +244,12 @@
             "author": "Redazione di Cuori di Carbone",
             "category": "Memorie e Orizzonti",
             "excerpt": "Il Presidente della Repubblica Sergio Mattarella ha reso oggi omaggio al Bois du Cazier, il sito minerario belga dove l'8 agosto 1956 si consumò una delle più grandi tragedie dell'emigrazione italiana, per non dimenticare il valore del lavoro.",
-            "image": "mattarella_card.jpg"
+            "image": "images/mattarella_card.jpg"
           }
         ]
       },
       {
-        "titolo_sezione": "Voci e Interviste",
+        "title_sezione": "Voci e Interviste",
         "sottotitolo_sezione": "Dialoghi con ex minatori, figli, scrittori o studiosi.",
         "articoli": [
           {
@@ -259,7 +259,7 @@
             "author": "Redazione di Cuori di Carbone",
             "category": "Voci e Interviste",
             "excerpt": "Nella mattinata del 9 febbraio 2026, il progetto culturale \"Cuori di Carbone\" è stato ospite del programma radiofonico Cjargne, in onda su Radio Spazio, raccontando gli sviluppi e i nuovi archivi raccolti sul territorio friulano.",
-            "image": "radio_card.jpg"
+            "image": "images/radio_card.jpg"
           },
           {
             "id": "natale-emigrati",
@@ -268,7 +268,7 @@
             "author": "Andrea Campagnolo",
             "category": "Voci e Interviste",
             "excerpt": "Ci sono Natali che non brillano per luci o regali, ma per ciò che riescono a lasciare nel tempo. In alcune città operaie del Belgio, le famiglie italiane ricreavano il calore di casa nel freddo dei distretti minerari.",
-            "image": "natale_card.jpg"
+            "image": "images/natale_card.jpg"
           },
           {
             "id": "giovanni-mario",
@@ -277,7 +277,7 @@
             "author": "Andrea Campagnolo",
             "category": "Voci e Interviste",
             "excerpt": "Due fratelli veneti, partiti da San Michele al Tagliamento, trovarono in Belgio la fatica, la speranza e lo stesso destino. Giovanni e Mario vissero un'esistenza scavata nel carbone, rimanendo legati oltre ogni confine.",
-            "image": "fratelli_card.jpg"
+            "image": "images/fratelli_card.jpg"
           },
           {
             "id": "ivana-marcinelle",
@@ -286,7 +286,7 @@
             "author": "Andrea Campagnolo",
             "category": "Voci e Interviste",
             "excerpt": "Nata dal destino e dalla tragedia di Marcinelle, Ivana Di Betta racconta la vita del padre Giuseppe, minatore friulano sopravvissuto miracolosamente all'esplosione del Bois du Cazier l'8 agosto del 1956.",
-            "image": "ivana_card.jpg"
+            "image": "images/ivana_card.jpg"
           }
         ]
       }

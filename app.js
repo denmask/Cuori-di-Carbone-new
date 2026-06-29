@@ -246,7 +246,7 @@ function executeRouter(viewId, data) {
                             <h3>${art.title}</h3>
                             <p>${art.excerpt}</p>
                         </div>
-                        <a href="#${art.id}" class="blog-readmore-btn">Leggi di più</a>
+                        <a href="#article-${art.id}" class="blog-readmore-btn">Leggi di più</a>
                     </div>
                 `;
             });
