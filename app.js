@@ -49,20 +49,32 @@ function initThemeManager() {
     });
 }
 
-// Funzione fondamentale per correggere i percorsi su GitHub Pages e Mobile
+// Funzione potenziata per la correzione e la normalizzazione dei percorsi delle immagini
 function fixImagePath(path) {
     if (!path) return '';
-    // Se inizia già con ./ o con http, va bene così
-    if (path.startsWith('./') || path.startsWith('http')) return path;
-    // Rimuove lo slash iniziale se presente per evitare conflitti con la sottocartella di GitHub
-    if (path.startsWith('/')) path = path.slice(1);
-    // Forza il percorso relativo locale pulito
-    return './' + path;
+    
+    // Se è un link esterno assoluto, non toccarlo
+    if (path.startsWith('http://') || path.startsWith('https://')) {
+        return path;
+    }
+
+    // Pulisce eventuali slash o punti iniziali ridondanti
+    let cleanPath = path.trim();
+    if (cleanPath.startsWith('./')) cleanPath = cleanPath.slice(2);
+    if (cleanPath.startsWith('/')) cleanPath = cleanPath.slice(1);
+
+    // Se l'immagine non include già la cartella 'images/', la aggiungiamo
+    if (!cleanPath.startsWith('images/')) {
+        cleanPath = 'images/' + cleanPath;
+    }
+
+    // Restituisce il percorso relativo locale perfetto per GitHub Pages
+    return './' + cleanPath;
 }
 
 function buildApplication(data) {
     const navContainer = document.getElementById('main-nav');
-    navContainer.innerHTML = ''; // Svuota per evitare duplicati
+    navContainer.innerHTML = ''; 
     
     data.navigation.forEach((menuItem, index) => {
         const link = document.createElement('a');
@@ -80,7 +92,7 @@ function buildApplication(data) {
     });
 
     const diarioContainer = document.getElementById('diario-container');
-    diarioContainer.innerHTML = ''; // Svuota per evitare duplicati
+    diarioContainer.innerHTML = ''; 
     data.diario_emigrante.forEach(item => {
         const card = document.createElement('div');
         card.className = 'diario-card';
@@ -171,7 +183,7 @@ function executeRouter(viewId, data) {
         const mData = data.i_nostri_minatori;
         let regioniHTML = '';
         mData.statistiche.regioni.forEach(r => {
-            regioniHTML += `<div class="region-tag-pill">${r.nome} <span>(${r.conteggio})</span></div>`;
+            regionsHTML += `<div class="region-tag-pill">${r.nome} <span>(${r.conteggio})</span></div>`;
         });
 
         mainContainer.innerHTML = `
@@ -197,7 +209,7 @@ function executeRouter(viewId, data) {
                     <div style="font-size:0.8rem; font-weight:700; opacity:0.8;">MINATORI ATTUALMENTE RITROVATI</div>
                     <div class="big-counter">${mData.statistiche.totale}</div>
                     <div style="margin-bottom:20px; font-size:0.9rem;">Identificati: <strong>${mData.statistiche.identificati}</strong> | Non identificati: <strong>${mData.statistiche.non_identificati}</strong></div>
-                    <div class="regions-flex-wrap">${regioniHTML}</div>
+                    <div class="regions-flex-wrap">${regionsHTML}</div>
                 </div>
 
                 <div style="text-align:center; margin-top:50px;">
@@ -264,7 +276,6 @@ function executeRouter(viewId, data) {
                 `;
             });
 
-            // Fallback di sicurezza se nel JSON si usa 'titolo_sezione' o 'title_sezione'
             const visualTitle = sezione.titolo_sezione || sezione.title_sezione || "Sezione";
 
             sezioniHTML += `
