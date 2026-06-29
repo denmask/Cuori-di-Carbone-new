@@ -25,7 +25,7 @@ function handleRouting() {
     }
 }
 
-// CORRETTO: Ricerca potenziata e flessibile per evitare mismatch di tipo (stringa/numero/slug)
+// Ricerca potenziata e flessibile per evitare mismatch di tipo (stringa/numero/slug)
 function findArticleById(id) {
     if (!globalData || !globalData.curiosi_di_carbone || !globalData.curiosi_di_carbone.sezioni) return null;
     
@@ -74,18 +74,33 @@ function initThemeManager() {
     }
 }
 
+// FUNZIONE DI SICUREZZA PER I PERCORSI DELLE IMMAGINI (INTELLIGENTE)
 function fixImagePath(path) {
     if (!path) return '';
+    
+    // Se è già un URL assoluto web, lo lasciamo intatto
     if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
+    // Puliamo il testo da spazi bianchi extra
     let cleanPath = path.trim();
+    
+    // Rimuoviamo eventuali prefissi relativi già presenti
     if (cleanPath.startsWith('./')) cleanPath = cleanPath.slice(2);
     if (cleanPath.startsWith('/')) cleanPath = cleanPath.slice(1);
 
-    if (!cleanPath.startsWith('images/')) {
+    // Se il percorso non contiene esplicitamente la parola "images/", la aggiungiamo all'inizio.
+    // Questo risolve il bug dei file che iniziano con caratteri speciali (es. "_DSC6481bis.jpg")
+    if (!cleanPath.toLowerCase().startsWith('images/')) {
         cleanPath = 'images/' + cleanPath;
     }
 
+    // GESTIONE AUTOMATICA AMBIENTE: GitHub Pages vs Live Server (locale)
+    if (window.location.hostname.includes('github.io')) {
+        // Forza l'uso della sottocartella assoluta richiesta dai server di GitHub Pages
+        return '/Cuori-di-Carbone-new/' + cleanPath;
+    }
+
+    // Percorso relativo pulito per il Live Server locale di VS Code
     return './' + cleanPath;
 }
 
@@ -330,7 +345,7 @@ function executeRouter(viewId, data) {
                 </section>
             `;
         }
-        // CORRETTO: Intercettiamo i click sui singoli articoli in modo sicuro
+        // Intercettiamo i click sui singoli articoli in modo sicuro
         else if (String(viewId).startsWith('article-') || findArticleById(viewId)) {
             const articleId = String(viewId).replace('article-', '');
             const article = findArticleById(articleId);
@@ -358,7 +373,7 @@ function executeRouter(viewId, data) {
                 contentHTML += `<img src="${fixImagePath(article.image)}" class="article-full-cover" alt="${article.title}">`;
             }
 
-            // CORRETTO: Aggiunta validazione rigorosa per evitare crash se i blocchi JSON sono malformati
+            // Validazione rigorosa per evitare crash se i blocchi JSON sono malformati o mancano di sezioni
             if (article.content && Array.isArray(article.content.sections)) {
                 contentHTML += `<p class="article-full-intro">${article.content.intro || ''}</p>`;
                 
