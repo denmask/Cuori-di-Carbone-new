@@ -29,11 +29,11 @@
       "name": "Andrea Campagnolo",
       "role": "Ideatore e curatore del progetto",
       "image": "image_7c5cc6.jpg",
-      "bio": "Classe 2005, Andrea, nipote di un minatore emigrato in Belgio nel secondo dopoguerra, è un ex studente dello IAL FVG. La sua esperienza personale e familiare lo ha portato a interrogarsi sulla storia dell'emigrazione mineraria italiana, trasformando un ricordo intimo e privato in un percorso collettivo di memoria e valorizzazione storica. Nato inizialmente come un semplice appunto in ambito scolastico, il suo lavoro si è progressivamente sviluppato in un progetto strutturato, capace di coinvolgere famiglie, associazioni culturali e istituzioni del territorio. Attraverso ricerca storica, raccolta di testimonianze, documenti e oggetti, Andrea ha contribuito a restituire voce e dignità a una generazione di lavoratori spesso dimenticata."
+      "bio": "Classe 2005, Andrea, nipote di un minatore emigrato in Belgio nel secondo dopoguerra, è un ex studente dello IAL FVG. La sua esperienza personale e familiare lo ha portato a interrogarsi sulla storia dell'emigrazione mineraria italiana, transforming un ricordo intimo e privato in un percorso collettivo di memoria e valorizzazione storica. Nato inizialmente come un semplice assunto in ambito scolastico, il suo lavoro si è progressivamente sviluppato in un progetto strutturato, capace di coinvolgere famiglie, associazioni culturali e istituzioni del territorio. Attraverso ricerca storica, raccolta di testimonianze, documenti e oggetti, Andrea ha contribuito a restituire voce e dignità a una generazione di lavoratori spesso dimenticata."
     },
     "association": {
       "title": "A.I.E.M. – Associazione Italiana Ex Minatori",
-      "text": "L'Associazione Italiana Ex Minatori è il braccio destro del progetto Cuori di Carbone, affiancando nell'organizzazione di eventi, gite, laboratori e iniziative culturali per valorizzare la memoria dei minatori italiani e delle comunità minerarie. Fondata nel 1961 a Fratta di Caneva (Pordenone) da Arduino Martinuzzo, appena rientratore in Italia dopo sedici anni trascorsi nelle miniere belghe, l'A.I.E.M. nasce con l'obiettivo di tutelare gli ex minatori italiani e le loro famiglie e di preservare la memoria di un'esperienza umana e lavorativa straordinaria e drammatica."
+      "text": "L'Associazione Italiana Ex Minatori è il braccio destro del progetto Cuori di Carbone, affiancando nell'organizzazione di events, gite, laboratori e iniziative culturali per valorizzare la memoria dei minatori italiani e delle comunità minerarie. Fondata nel 1961 a Fratta di Caneva (Pordenone) da Arduino Martinuzzo, appena rientratore in Italia dopo sedici anni trascorsi nelle miniere belghe, l'A.I.E.M. nasce con l'obiettivo di tutelare gli ex minatori italiani e le loro famiglie e di preservare la memoria di un'esperienza umana e lavorativa straordinaria e drammatica."
     }
   },
   "i_nostri_minatori": {
@@ -146,7 +146,7 @@
                 {
                   "heading": "Una celebrazione di memoria e comunità",
                   "text": "La cerimonia si è aperta con la Santa Messa, momento iniziale e centrale della giornata, alla quale hanno preso parte ex minatori, familiari, rappresentanti delle associazioni, autorità civili e numerosi cittadini. In chiesa erano presenti i gonfaloni dell'A.I.E.M. - Associazione Italiana Ex Minatori delle sezioni di Latisana, Palazzo dello Stella e Pradipozzo di Portogruaro, che hanno accompagnato la celebrazione rendendo visibilmente presente la storia dell'emigrazione mineraria. Assenti, ma simbolicamente ricordate, le sezioni dell'A.I.E.M. di San Michele al Tagliamento e Lignano Sabbiadoro.",
-                  "images": ["images/_DSC6481bis.jpg", "_DSC6486.JPG"]
+                  "images": ["images/_DSC6481bis.jpg", "images/_DSC6486.JPG"]
                 },
                 {
                   "heading": "La voce dei giovani e della memoria",
@@ -155,12 +155,12 @@
                 },
                 {
                   "heading": "Il corteo e l'omaggio ai minatori",
-                  "text": "Conclusa la funzione religiosa, la cerimonia è proseguita con il corteo cittadino, che ha attraversato le vie di Latisana in modo ordinato e composto. Il cammino, guidato dai gonfaloni dell'A.I.E.M., ha collegato simbolicamente il momento religioso a quello civile, trasformando la città in uno spazio di memoria condivisa e partecipata.",
+                  "text": "Conclusa la funzione religiosa, la cerimonia è proseguita con il corteo cittadino, che ha attraversato le vai di Latisana in modo ordinato e composto. Il cammino, guidato dai gonfaloni dell'A.I.E.M., ha collegato simbolicamente il momento religioso a quello civile, trasformando la città in uno spazio di memoria condivisa e partecipata.",
                   "images": ["images/_DSC6500bis.jpg"]
                 },
                 {
                   "heading": "Il monumento ai minatori e la deposizione delle corone",
-                  "text": "Il momento conclusivo si è svolto presso il monumento dedicato ai minatori, dove si è tenuta la cerimonia commemorativa con la deposizione delle corone d'alloro. Alla presenza delle autorità civili, con il sindaco di Latisana, Lanfranco Sette, sottolineando il valore identitario e collettivo di questa memoria per la comunità locale.",
+                  "text": "Il momento conclusivo si è svolto presso il monumento dedicato ai minatori, dove si è tenuta la cerimonia commemorativa con la deposizione delle corone d'alloro. Alla presenza delle autorità civili, con il sindaco di Latisana, Lanfranco Sette, sottolineando il valore identitario e collective di questa memoria pentru la comunità locale.",
                   "images": ["images/_DSC6555.jpeg"]
                 },
                 {
@@ -184,12 +184,12 @@
               "sections": [
                 {
                   "heading": "Il tempo che non si fermava",
-                  "text": "Per i minatori italiani emigrati in Belgio, l'Epifania non aveva un volto particolare. Non era un giorno diverso dagli altri. Non era un giorno diverso dagli altri. Il lavoro in miniera non seguiva il ritmo delle feste. Sotto terra non c'erano calendari appesi al muro, né giorni segnati in rosso. C'erano solo turni, buio, polvere e silenzio. Mentre in superficie si smontavano i presepi e si tornava alla normalità, nelle gallerie il tempo era rimasto sempre lo stesso. Un tempo fatto di fatica quotidiana, di gesti ripetuti, di corpi che imparavano a resistere.",
+                  "text": "Per i minatori italiani emigrati in Belgio, l'Epifania non aveva un volto particolare. Non era un giorno diverso dagli altri. Il lavoro in miniera non seguiva il ritmo delle feste. Sotto terra non c'erano calendari appesi al muro, né giorni segnati in rosso. C'erano solo turni, buio, polvere e silenzio. Mentre in superficie si smontavano i presepi e si tornava alla normalità, nelle gallerie il tempo era rimasto sempre lo stesso. Un tempo fatto di fatica quotidiana, di gesti ripetuti, di corpi che imparavano a resistere.",
                   "images": ["epifania_1.jpg", "epifania_2.jpg"]
                 },
                 {
                   "heading": "Le feste lontane da casa",
-                  "text": "Per molti minatori, le feste erano soprattutto assenza. Assenza di casa. Assenza della famiglia. Assenza dei figli che crescevano lontano. L'Epifania arrivava spesso con una lettera, con una foto piegata, con un pacco spedito dall'Italia. Piccoli segni che rompevano la monotonia dei giorni uguali. Un dolce che sapeva di casa. Un rosario. Una parola scritta con grafia incerta, ma piena di significato. Fra così che si teneva vivo il legame: attraverso la memoria, anche quando il corpo era lontano.",
+                  "text": "Per molti minatori, le feste erano soprattutto assenza. Assenza di casa. Assenza della famiglia. Assenza dei figli che crescevano lontano. L'Epifania arrivava spesso con una letter, con una foto piegata, con un pacco spedito dall'Italia. Piccoli segni che rompevano la monotonia dei giorni uguali. Un dolce che sapeva di casa. Un rosario. Una parola scritta con grafia incerta, ma piena di significato. Fra così che si teneva vivo il legame: attraverso la memoria, anche quando il corpo era lontano.",
                   "images": ["minatori_famiglia.jpg"]
                 },
                 {
@@ -294,7 +294,7 @@
   },
   "diario_emigrante": [
     {
-      "text": "Figlia e nipoti di Ugo Ciprian, ex minatore, mancato nel 2009. Grazie ad Andrea per aver insegnato a ricordare sempre i nostri cari.",
+      "text": "Figlia e nipoti di Ugo Ciprian, ex minatore, mancato nel 2009. Grazie ad Andrea per haber insegnato a ricordare sempre i nostri cari.",
       "author": "Famiglia Ciprian di Paludo di Latisana (UD)",
       "context": "Cuori di Carbone – Storia di Fatica e Speranza tra le profondità delle Miniere Belghe",
       "date": "15 maggio 2025"
