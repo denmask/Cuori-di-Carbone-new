@@ -49,8 +49,20 @@ function initThemeManager() {
     });
 }
 
+// Funzione fondamentale per correggere i percorsi su GitHub Pages e Mobile
+function fixImagePath(path) {
+    if (!path) return '';
+    // Se inizia già con ./ o con http, va bene così
+    if (path.startsWith('./') || path.startsWith('http')) return path;
+    // Rimuove lo slash iniziale se presente per evitare conflitti con la sottocartella di GitHub
+    if (path.startsWith('/')) path = path.slice(1);
+    // Forza il percorso relativo locale pulito
+    return './' + path;
+}
+
 function buildApplication(data) {
     const navContainer = document.getElementById('main-nav');
+    navContainer.innerHTML = ''; // Svuota per evitare duplicati
     
     data.navigation.forEach((menuItem, index) => {
         const link = document.createElement('a');
@@ -68,6 +80,7 @@ function buildApplication(data) {
     });
 
     const diarioContainer = document.getElementById('diario-container');
+    diarioContainer.innerHTML = ''; // Svuota per evitare duplicati
     data.diario_emigrante.forEach(item => {
         const card = document.createElement('div');
         card.className = 'diario-card';
@@ -119,7 +132,7 @@ function executeRouter(viewId, data) {
                 
                 <div class="founder-block" style="margin-top:70px;">
                     <div>
-                        <img src="${data.home.origine.image}" class="founder-img" alt="Origine">
+                        <img src="${fixImagePath(data.home.origine.image)}" class="founder-img" alt="Origine">
                     </div>
                     <div>
                         <span style="color:var(--color-amber); font-size:0.8rem; font-weight:700; letter-spacing:1px;">${data.home.origine.tag}</span>
@@ -138,7 +151,7 @@ function executeRouter(viewId, data) {
                 
                 <div class="founder-block">
                     <div>
-                        <img src="${data.chi_siamo.founder.image}" class="founder-img" alt="Andrea">
+                        <img src="${fixImagePath(data.chi_siamo.founder.image)}" class="founder-img" alt="Andrea">
                     </div>
                     <div>
                         <h2 style="font-size:2rem; margin-bottom:5px;">${data.chi_siamo.founder.name}</h2>
@@ -166,7 +179,7 @@ function executeRouter(viewId, data) {
                 <h1 style="font-size:3rem; text-align:center; margin-bottom:40px;">${mData.title}</h1>
                 
                 <div class="minatore-day-card">
-                    <div class="minatore-day-img-box"></div>
+                    <div class="minatore-day-img-box" style="background-image: url('${fixImagePath(mData.minatore_del_giorno.image)}'); background-size: cover; background-position: center; min-height: 220px;"></div>
                     <div class="minatore-day-content">
                         <span class="badge-day">${mData.minatore_del_giorno.label}</span>
                         <h2>${mData.minatore_del_giorno.name}</h2>
@@ -190,7 +203,7 @@ function executeRouter(viewId, data) {
                 <div style="text-align:center; margin-top:50px;">
                     <p style="max-width:700px; margin:0 auto 30px auto; color:var(--color-text-muted);">${mData.sub_text}</p>
                     <div class="map-visualization-box">
-                        <img src="${mData.mappa_immagine}" alt="Mappa">
+                        <img src="${fixImagePath(mData.mappa_immagine)}" alt="Mappa">
                     </div>
                 </div>
             </section>
@@ -214,7 +227,7 @@ function executeRouter(viewId, data) {
                         </div>
                     </div>
                     <div class="evento-image-col">
-                        <img src="${cat.image}" alt="${cat.title}">
+                        <img src="${fixImagePath(cat.image)}" alt="${cat.title}">
                     </div>
                 </div>
             `;
@@ -251,11 +264,14 @@ function executeRouter(viewId, data) {
                 `;
             });
 
+            // Fallback di sicurezza se nel JSON si usa 'titolo_sezione' o 'title_sezione'
+            const visualTitle = sezione.titolo_sezione || sezione.title_sezione || "Sezione";
+
             sezioniHTML += `
                 <div class="blog-group-wrapper">
                     <div class="blog-group-header">
-                        <h2>${sezione.titolo_sezione}</h2>
-                        <p>${sezione.sottotitolo_sezione}</p>
+                        <h2>${visualTitle}</h2>
+                        <p>${sezione.sottotitolo_sezione || ''}</p>
                     </div>
                     <div class="blog-grid">
                         ${articoliHTML}
@@ -299,7 +315,7 @@ function executeRouter(viewId, data) {
         `;
 
         if (article.image) {
-            contentHTML += `<img src="${article.image}" class="article-full-cover" alt="${article.title}">`;
+            contentHTML += `<img src="${fixImagePath(article.image)}" class="article-full-cover" alt="${article.title}">`;
         }
 
         if (article.content && article.content.sections) {
@@ -314,7 +330,7 @@ function executeRouter(viewId, data) {
                 
                 if (section.images && section.images.length > 0) {
                     section.images.forEach(img => {
-                        contentHTML += `<img src="${img}" alt="${section.heading}" class="article-full-img">`;
+                        contentHTML += `<img src="${fixImagePath(img)}" alt="${section.heading}" class="article-full-img">`;
                     });
                 }
                 
