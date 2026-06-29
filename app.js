@@ -40,30 +40,26 @@ function initThemeManager() {
     
     document.documentElement.setAttribute('data-theme', currentTheme);
 
-    toggleBtn.addEventListener('click', () => {
-        const activeTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-    });
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            const activeTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    }
 }
 
-// Funzione radicale di correzione percorsi
+// Funzione di sicurezza per i percorsi delle immagini
 function fixImagePath(path) {
     if (!path) return '';
-    
-    if (path.startsWith('http://') || path.startsWith('https://')) {
-        return path;
-    }
+    if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
     let cleanPath = path.trim();
-    
-    // Rimuove peezzi iniziali ripetitivi o errati
     if (cleanPath.startsWith('./')) cleanPath = cleanPath.slice(2);
     if (cleanPath.startsWith('/')) cleanPath = cleanPath.slice(1);
 
-    // Forza l'inserimento della sottocartella images se manca dal nome file
     if (!cleanPath.startsWith('images/')) {
         cleanPath = 'images/' + cleanPath;
     }
