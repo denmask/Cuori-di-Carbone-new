@@ -1,3 +1,5 @@
+let globalData = null;
+
 document.addEventListener("DOMContentLoaded", () => {
     initThemeManager();
 
@@ -7,10 +9,30 @@ document.addEventListener("DOMContentLoaded", () => {
             return response.json();
         })
         .then(data => {
+            globalData = data;
             buildApplication(data);
+            handleRouting();
         })
         .catch(err => console.error("Errore caricamento dati:", err));
 });
+
+window.addEventListener('hashchange', handleRouting);
+
+function handleRouting() {
+    const hash = window.location.hash.slice(1) || 'home';
+    if (globalData) {
+        executeRouter(hash, globalData);
+    }
+}
+
+function findArticleById(id) {
+    if (!globalData) return null;
+    for (let sezione of globalData.curiosi_di_carbone.sezioni) {
+        const found = sezione.articoli.find(art => art.id === id);
+        if (found) return found;
+    }
+    return null;
+}
 
 function initThemeManager() {
     const toggleBtn = document.getElementById('theme-toggle-btn');
@@ -47,13 +69,14 @@ function buildApplication(data) {
 
     const diarioContainer = document.getElementById('diario-container');
     data.diario_emigrante.forEach(item => {
-        diarioContainer.innerHTML += `
-            <div class="diario-card">
-                <p>"${item.text}"</p>
-                <div class="diario-author">— ${item.author}</div>
-                <div style="font-size:0.75rem; color:var(--color-text-muted); margin-top:4px;">${item.context} (${item.date})</div>
-            </div>
+        const card = document.createElement('div');
+        card.className = 'diario-card';
+        card.innerHTML = `
+            <p>"${item.text}"</p>
+            <div class="diario-author">— ${item.author}</div>
+            <div style="font-size:0.75rem; color:var(--color-text-muted); margin-top:4px;">${item.context} (${item.date})</div>
         `;
+        diarioContainer.appendChild(card);
     });
 
     document.querySelectorAll('.footer-links-nav a').forEach(footerLink => {
@@ -223,7 +246,7 @@ function executeRouter(viewId, data) {
                             <h3>${art.title}</h3>
                             <p>${art.excerpt}</p>
                         </div>
-                        <button class="blog-readmore-btn">Leggi di più</button>
+                        <a href="#${art.id}" class="blog-readmore-btn">Leggi di più</a>
                     </div>
                 `;
             });
@@ -251,5 +274,63 @@ function executeRouter(viewId, data) {
                 ${sezioniHTML}
             </section>
         `;
+    }
+    else if (viewId.startsWith('article-') || findArticleById(viewId)) {
+        const articleId = viewId.replace('article-', '');
+        const article = findArticleById(articleId);
+        
+        if (!article) {
+            mainContainer.innerHTML = '<section class="container"><h1>Articolo non trovato</h1></section>';
+            return;
+        }
+
+        let contentHTML = `
+            <section class="container article-full-page">
+                <a href="#curiosi-di-carbone" class="article-back-link">← Torna ai Curiosi di Carbone</a>
+                
+                <div class="article-full-header">
+                    <span class="article-full-category">${article.category || 'Articolo'}</span>
+                    <h1>${article.title}</h1>
+                    <div class="article-full-meta">
+                        <span>${article.date}</span>
+                        <span>di ${article.author}</span>
+                    </div>
+                </div>
+        `;
+
+        if (article.image) {
+            contentHTML += `<img src="${article.image}" class="article-full-cover" alt="${article.title}">`;
+        }
+
+        if (article.content && article.content.sections) {
+            contentHTML += `<p class="article-full-intro">${article.content.intro}</p>`;
+            
+            article.content.sections.forEach(section => {
+                contentHTML += `
+                    <div class="article-full-section">
+                        <h2>${section.heading}</h2>
+                        <p>${section.text}</p>
+                `;
+                
+                if (section.images && section.images.length > 0) {
+                    section.images.forEach(img => {
+                        contentHTML += `<img src="${img}" alt="${section.heading}" class="article-full-img">`;
+                    });
+                }
+                
+                contentHTML += `</div>`;
+            });
+        } else {
+            contentHTML += `<p class="article-full-text">${article.excerpt || 'Contenuto completo dell\'articolo'}</p>`;
+        }
+
+        contentHTML += `
+                <div class="article-full-footer">
+                    <a href="#curiosi-di-carbone" class="btn-back-articles">Torna ai Curiosi di Carbone</a>
+                </div>
+            </section>
+        `;
+
+        mainContainer.innerHTML = contentHTML;
     }
 }
