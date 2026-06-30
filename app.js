@@ -125,12 +125,18 @@ function buildApplication(data) {
             const card = document.createElement('div');
             card.className = 'diario-card';
             card.innerHTML = `
-                <p>"${item.text}"</p>
+                <p>${item.text}</p>
                 <div class="diario-author">— ${item.author}</div>
-                <div style="font-size:0.75rem; color:var(--color-text-muted); margin-top:4px;">${item.context} (${item.date})</div>
+                <div class="diario-context">${item.context}</div>
+                <div class="diario-meta">${item.date}${item.location ? ' - ' + item.location : ''}</div>
             `;
             diarioContainer.appendChild(card);
         });
+    }
+
+    const diarioExtra = document.getElementById('diario-extra-text');
+    if (diarioExtra && data.home && data.home.diario_extra_text) {
+        diarioExtra.innerText = data.home.diario_extra_text;
     }
 
     document.querySelectorAll('.footer-links-nav a').forEach(footerLink => {
@@ -171,6 +177,52 @@ function executeRouter(viewId, data) {
                 `;
             });
 
+            const cammino = data.home.cammino;
+            let tappeHTML = '';
+            if (cammino && Array.isArray(cammino.tappe)) {
+                cammino.tappe.forEach(tappa => {
+                    let imagesHTML = '';
+                    if (Array.isArray(tappa.images) && tappa.images.length > 0) {
+                        let imgs = '';
+                        tappa.images.forEach(img => {
+                            imgs += `<img src="${fixImagePath(img)}" alt="${tappa.title}">`;
+                        });
+                        imagesHTML = `<div class="tappa-images-grid count-${tappa.images.length}">${imgs}</div>`;
+                    }
+                    tappeHTML += `
+                        <div class="tappa-item">
+                            <div class="tappa-dot"></div>
+                            <div class="tappa-row">
+                                <div class="tappa-content">
+                                    <div class="tappa-date">${tappa.date}</div>
+                                    <div class="tappa-card">
+                                        <h3>${tappa.title}</h3>
+                                        <p>${tappa.text}</p>
+                                        ${tappa.location ? `<div class="tappa-location">${tappa.location}</div>` : ''}
+                                    </div>
+                                </div>
+                                ${imagesHTML ? `<div class="tappa-media">${imagesHTML}</div>` : ''}
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            const curiosi = data.home.curiosi_preview;
+            let curiosiArticoliHTML = '';
+            if (curiosi && Array.isArray(curiosi.articoli)) {
+                curiosi.articoli.forEach(art => {
+                    curiosiArticoliHTML += `
+                        <div class="curiosi-preview-card">
+                            <div class="curiosi-preview-img" style="background-image: url('${fixImagePath(art.image)}');"></div>
+                            <a href="${art.link}" class="curiosi-preview-title">${art.title}</a>
+                            <div class="curiosi-preview-meta">${art.author}<br>${art.date}</div>
+                            <p class="curiosi-preview-excerpt">${art.excerpt}</p>
+                        </div>
+                    `;
+                });
+            }
+
             mainContainer.innerHTML = `
                 <section class="container">
                     <div class="hero-home-section">
@@ -190,6 +242,44 @@ function executeRouter(viewId, data) {
                         </div>
                     </div>
                 </section>
+
+                ${cammino ? `
+                <section class="cammino-section">
+                    <div class="container">
+                        <div class="section-header-center">
+                            <div class="line-divider"></div>
+                            <h2>${cammino.title}</h2>
+                            <p class="cammino-label">${cammino.label}</p>
+                            <p class="cammino-intro">${cammino.intro}</p>
+                        </div>
+                        <div class="tappe-timeline">
+                            ${tappeHTML}
+                        </div>
+                        <div class="cammino-cta-buttons">
+                            <a href="${cammino.cta.btn_eventi_link}" class="btn-cammino btn-cammino-outline">${cammino.cta.btn_eventi}</a>
+                            <a href="${cammino.cta.btn_collabora_link}" class="btn-cammino btn-cammino-filled">${cammino.cta.btn_collabora}</a>
+                        </div>
+                    </div>
+                </section>
+                ` : ''}
+
+                ${curiosi ? `
+                <section class="curiosi-preview-section">
+                    <div class="container">
+                        <div class="section-header-center">
+                            <h2>${curiosi.title_1}<br>${curiosi.title_2}</h2>
+                            <div class="line-divider"></div>
+                            <p class="curiosi-preview-intro">${curiosi.text}</p>
+                        </div>
+                        <div class="curiosi-preview-grid">
+                            ${curiosiArticoliHTML}
+                        </div>
+                        <div class="curiosi-preview-blog-btn">
+                            <a href="${curiosi.btn_blog_link}" class="btn-vai-al-blog">${curiosi.btn_blog}</a>
+                        </div>
+                    </div>
+                </section>
+                ` : ''}
             `;
         } 
         else if (viewId === 'chi-siamo') {
