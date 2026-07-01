@@ -1741,3 +1741,192 @@ body {
     text-indent: -9999px;
     overflow: hidden;
 }
+/* ============================================= */
+/* SEZIONI ARTICOLO: RISPONDI / ULTIMI ARTICOLI / MORE FROM THE BLOG */
+/* ============================================= */
+
+.article-comments-section {
+    border-top: 1px solid var(--navbar-border);
+    padding: 60px 0;
+}
+
+.article-comments-section h2,
+.article-related-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: var(--color-text-pure);
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.comment-textarea {
+    width: 100%;
+    background-color: var(--color-surface);
+    border: 1px solid var(--navbar-border);
+    border-radius: 12px;
+    padding: 18px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--color-text-pure);
+    resize: vertical;
+    min-height: 120px;
+    transition: border-color 0.2s ease;
+}
+
+.comment-textarea:focus {
+    outline: none;
+    border-color: var(--color-amber);
+}
+
+.comment-form-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-comment-submit {
+    background-color: var(--color-amber);
+    color: #1a1a1a;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-comment-submit:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+}
+
+.article-related-section {
+    border-top: 1px solid var(--navbar-border);
+    background-color: var(--color-surface);
+    padding: 60px 0;
+}
+
+.related-articles-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.related-article-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-decoration: none;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--navbar-border);
+    transition: all 0.2s ease;
+}
+
+.related-article-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.related-article-title {
+    color: var(--color-text-pure);
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.related-article-item:hover .related-article-title {
+    color: var(--color-amber);
+}
+
+.related-article-date {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+}
+
+.more-from-blog-section {
+    border-top: 1px solid var(--navbar-border);
+    padding: 60px 0 70px 0;
+}
+
+.more-from-blog-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: var(--color-text-pure);
+}
+
+.moreblog-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px 25px;
+}
+
+.moreblog-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.25s ease;
+}
+
+.moreblog-card:hover {
+    transform: translateY(-4px);
+}
+
+.moreblog-card-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--blog-card-bg);
+    border-radius: 10px;
+    margin-bottom: 14px;
+}
+
+.moreblog-card-date {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--color-amber);
+    margin-bottom: 8px;
+}
+
+.moreblog-card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--color-text-pure);
+    transition: color 0.2s ease;
+}
+
+.moreblog-card:hover .moreblog-card-title {
+    color: var(--color-amber);
+}
+
+@media (max-width: 1024px) {
+    .moreblog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 560px) {
+    .moreblog-grid {
+        grid-template-columns: 1fr;
+    }
+    .article-comments-section,
+    .article-related-section,
+    .more-from-blog-section {
+        padding: 40px 0;
+    }
+    .article-comments-section h2,
+    .article-related-section h2,
+    .more-from-blog-section h2 {
+        font-size: 1.6rem;
+    }
+}

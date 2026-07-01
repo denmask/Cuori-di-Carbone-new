@@ -57,6 +57,32 @@ function findArticleById(id) {
     return null;
 }
 
+// Restituisce l'elenco completo (piatto) di tutti gli articoli del blog "Curiosi di Carbone"
+function getAllArticles(data) {
+    if (!data || !data.curiosi_di_carbone || !Array.isArray(data.curiosi_di_carbone.sezioni)) return [];
+    let all = [];
+    data.curiosi_di_carbone.sezioni.forEach(sezione => {
+        if (Array.isArray(sezione.articoli)) all = all.concat(sezione.articoli);
+    });
+    return all;
+}
+
+// Converte una data testuale in italiano (es. "16 Dicembre 2025") in un oggetto Date per l'ordinamento
+function parseItalianDate(dateStr) {
+    if (!dateStr) return new Date(0);
+    const mesi = {
+        'gennaio': 0, 'febbraio': 1, 'marzo': 2, 'aprile': 3, 'maggio': 4, 'giugno': 5,
+        'luglio': 6, 'agosto': 7, 'settembre': 8, 'ottobre': 9, 'novembre': 10, 'dicembre': 11
+    };
+    const parts = String(dateStr).toLowerCase().trim().split(/\s+/);
+    if (parts.length < 3) return new Date(0);
+    const giorno = parseInt(parts[0], 10);
+    const mese = mesi[parts[1]];
+    const anno = parseInt(parts[2], 10);
+    if (isNaN(giorno) || mese === undefined || isNaN(anno)) return new Date(0);
+    return new Date(anno, mese, giorno);
+}
+
 // Ricerca del minatore in evidenza tramite slug per la pagina di dettaglio dedicata
 function findMinatoreBySlug(slug) {
     if (!globalData || !globalData.i_nostri_minatori) return null;
@@ -608,7 +634,72 @@ function executeRouter(viewId, data) {
                 </section>
             `;
 
-            mainContainer.innerHTML = contentHTML;
+            // Prepariamo l'elenco di tutti gli articoli (esclusi quello corrente) ordinati dal più recente
+            const allArticles = getAllArticles(data)
+                .filter(a => a && a.id !== article.id)
+                .sort((a, b) => parseItalianDate(b.date) - parseItalianDate(a.date));
+
+            // Blocco "Rispondi" - form commenti (statico, di sola interfaccia)
+            const commentsHTML = `
+                <section class="article-comments-section">
+                    <div class="container article-full-page">
+                        <h2>Rispondi</h2>
+                        <form class="comment-form" onsubmit="return false;">
+                            <textarea class="comment-textarea" placeholder="Scrivi un Commento..." rows="5"></textarea>
+                            <div class="comment-form-actions">
+                                <button type="submit" class="btn-comment-submit">Commenta</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            `;
+
+            // Blocco "Leggi gli ultimi articoli" - i 3 articoli più recenti
+            const ultimiArticoli = allArticles.slice(0, 3);
+            let ultimiArticoliHTML = '';
+            ultimiArticoli.forEach(a => {
+                ultimiArticoliHTML += `
+                    <a href="#article-${a.id}" class="related-article-item">
+                        <span class="related-article-title">${a.title}</span>
+                        <span class="related-article-date">${a.date}</span>
+                    </a>
+                `;
+            });
+            const relatedHTML = ultimiArticoli.length > 0 ? `
+                <section class="article-related-section">
+                    <div class="container article-full-page">
+                        <h2>Leggi gli ultimi articoli</h2>
+                        <div class="related-articles-grid">
+                            ${ultimiArticoliHTML}
+                        </div>
+                    </div>
+                </section>
+            ` : '';
+
+            // Blocco "More from the blog" - griglia estesa di tutti gli altri articoli, stessa importanza del footer
+            const moreFromBlog = allArticles.slice(0, 8);
+            let moreFromBlogHTML = '';
+            moreFromBlog.forEach(a => {
+                moreFromBlogHTML += `
+                    <a href="#article-${a.id}" class="moreblog-card">
+                        <div class="moreblog-card-img" style="background-image: url('${fixImagePath(a.image)}');"></div>
+                        <div class="moreblog-card-date">${String(a.date).toUpperCase()}</div>
+                        <div class="moreblog-card-title">${a.title}</div>
+                    </a>
+                `;
+            });
+            const moreFromBlogSection = moreFromBlog.length > 0 ? `
+                <section class="more-from-blog-section">
+                    <div class="container">
+                        <h2>More from the blog</h2>
+                        <div class="moreblog-grid">
+                            ${moreFromBlogHTML}
+                        </div>
+                    </div>
+                </section>
+            ` : '';
+
+            mainContainer.innerHTML = contentHTML + commentsHTML + relatedHTML + moreFromBlogSection;
         }
     } catch (routeError) {
         console.error("Crash protetto nel router JavaScript:", routeError);

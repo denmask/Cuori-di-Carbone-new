@@ -503,7 +503,50 @@
             "author": "Andrea Campagnolo",
             "category": "Memorie e Orizzonti",
             "excerpt": "Un viaggio nelle viscere della Sicilia tra Ottocento e Novecento: la storia delle miniere di zolfo, dei bambini-carusi e di un popolo che lavorava nel buio per illuminare l’Europa.",
-            "image": "images/miniera-Floristella-.webp"
+            "image": "images/miniera-Floristella-.webp",
+            "content": {
+              "intro": "Le miniere che illuminarono l'Europa e oscurarono la vita di migliaia di italiani.",
+              "sections": [
+                {
+                  "heading": "L'oro giallo dell'isola",
+                  "text": "A fine Ottocento la Sicilia era il cuore pulsante dell'industria europea. Tra Caltanissetta, Enna, Sommatino e Floristella, si estendeva un mondo sotterraneo fatto di sudore, calore e buio: quello delle miniere di zolfo, da cui proveniva quasi tutto lo zolfo impiegato in Europa per la produzione di fiammiferi, polveri da sparo e fertilizzanti. Nel 1910 erano attive oltre 300 solfare e più di 20.000 minatori scendevano ogni giorno nelle viscere dell'isola. Le società straniere e i baroni locali si arricchivano, mentre gli operai lavoravano nudi dalla cintola in su, con una candela e un piccone, in cunicoli che raggiungevano i 400 metri di profondità. Il calore superava i 45 gradi, l'aria era impregnata di gas tossici. Molti morivano asfissiati o sepolti da frane improvvise. Eppure ogni alba, uomini e ragazzi si allineavano davanti agli ingressi, in silenzio, come se la miniera li chiamasse per nome.",
+                  "images": [
+                    "images/immagine-2-zolfo.webp"
+                  ],
+                  "images_caption": "1930, Miniera di Floristella – Minatori al lavoro (fonte: radarmagazine.net)"
+                },
+                {
+                  "heading": "I carusi e le famiglie dello zolfo",
+                  "text": "Il volto più duro di quell'inferno era quello dei carusi, i bambini-schiavi delle miniere. Avevano tra i 7 e i 12 anni e venivano affidati ai piconieri in cambio di poche lire. Il loro lavoro era trasportare sulle spalle sacchi di minerale da 30 o 40 chili, in cunicoli caldi, scivolosi e quasi privi d'aria. Molti non superavano i vent'anni: la polvere e lo sforzo li consumavano prima del tempo. Ma accanto ai bambini c'erano anche intere famiglie che vivevano del lavoro minerario. Tra queste, la famiglia Caliota, originario di Villarosa (Enna). Il padre e gli zii di Lillo avevano lavorato per anni nelle solfare della zona, respirando il gas acre, trasportando zolfo rovente in spalle bruciate.<br><br><span class=\"quote-highlight\">“Mio padre aveva solo sei anni quando scese per la prima volta nella miniera di zolfo. La candela tremava nella mano troppo piccola per il secchio che portava. L'aria sapeva di fuoco e polvere, e la paura non faceva rumore. Come lui, migliaia di bambini siciliani lavoravano sottoterra, venduti alla miseria prima ancora di imparare a scrivere il proprio nome.”<br><small>TRATTO DALLA TESTIMONIANZA DELLA FAMIGLIA CALIOTA, RACCOLTA IL 26 OTTOBRE 2025</small></span>Per loro, la miniera era l'unica possibilità di sopravvivere. Eppure, già allora, la Sicilia sotterranea sognava di fuggire altrove — verso il Belgio, la speranza di una paga migliore. Gli uomini della famiglia Caliota conoscevano il buio e il peso della terra: quando anni dopo sarebbero partiti per le miniere di carbone, si sarebbero portati dentro il ricordo acre dello zolfo.",
+                  "images": [
+                    "images/immagine-3-zolfo.webp",
+                    "images/"
+                  ],
+                  "images_caption": "1923/25, Sicilia – Esterno di una miniera del nisseno (fonte: zarabaza.it) · Mappa: “Sicilia - L'estrazione mineraria dello zolfo (secc. XIX-XX)” di Leone Venticinque, creata con Google My Maps"
+                },
+                {
+                  "heading": "Polvere, sudore e rivolte",
+                  "text": "Tra il 1860 e il 1950, la storia delle miniere siciliane fu una lunga sequenza di disastri. Crolli, fughe di gas, esplosioni di grisù: centinaia di vittime, molte mai registrate. La tragedia più ricordata resta quella di Gessolungo, l'11 novembre 1911, quando 65 minatori — tra cui 19 bambini — morirono intrappolati. I corpi furono estratti solo dopo giorni, anneriti e irriconoscibili. Quel disastro scosse l'opinione pubblica e spinse i primi sindacati a chiedere riforme. A Caltanissetta nacquero cooperative e movimenti di mutuo soccorso: per la prima volta, i minatori provavano a farsi sentire.",
+                  "images": [
+                    "images/immagine-5-zolfo.webp"
+                  ],
+                  "images_caption": "Il Cimitero dei Carusi a Caltanissetta, Sicilia (fonte: altervista.org)"
+                },
+                {
+                  "heading": "Il declino e la fuga verso altrove",
+                  "text": "Nel secondo dopoguerra, la concorrenza dello zolfo americano e la mancanza di modernizzazione portarono al progressivo declino delle solfare. Tra il 1950 e il 1970, la maggior parte delle miniere chiusero, lasciando interi paesi senza lavoro. La fame tornò a mordere, e con essa la necessità di emigrare.<br><br><span class=\"quote-highlight\">“Papà diceva che almeno il carbone non bruciava la pelle, ma ti restava nei polmoni, e non se ne andava più.”<br><small>TRATTO DALLA TESTIMONIANZA DELLA FAMIGLIA CALIOTA, RACCOLTA IL 26 OTTOBRE 2025</small></span>Molti zolfatari — tra cui il padre Angelo e gli zii Giovanni e Giuseppe di Lillo — decisero di partire per il Belgio, accettando nuovi contratti minerari. Lì, nelle gallerie di Marcinelle, trovarono un'altra oscurità, più fredda ma non meno crudele. Dalle miniere di zolfo a quelle di carbone: il passaggio fu naturale, quasi inevitabile. Il mestiere era lo stesso, solo il colore della polvere cambiava.",
+                  "images": []
+                },
+                {
+                  "heading": "Le zolfare oggi: la memoria accesa",
+                  "text": "Oggi, nei parchi minerari di Floristella-Grottacalda, Trabia-Tallarita, Caltanissetta e Sommatino, i visitatori possono ancora entrare nei cunicoli dove gli uomini lavoravano al buio. I carrelli arrugginiti, le lampade a carburo, i registri di contabilità con le firme tremolanti dei minatori raccontano una Sicilia diversa, che scendeva sotto terra per illuminare il mondo. Ogni 4 dicembre, festa di Santa Barbara, patrona dei minatori, i discendenti degli zolfatari accendono una lampada davanti agli ingressi chiusi. È un gesto semplice, ma carico di significato: ricordare chi ha dato la vita alla terra e non l'ha mai ripresa indietro.<br><br><span class=\"quote-highlight\">“La Sicilia illuminava l'Europa, ma le sue miniere restavano al buio.”<br><small>ROSARIO VILLARI (1925–2017), STORICO E POLITICO ITALIANO</small></span>Oggi quella luce torna, tenue ma viva, nelle parole di chi racconta.",
+                  "images": [
+                    "images/immagine-6-zolfo.webp"
+                  ],
+                  "images_caption": "Esterno di una miniera di zolfo in Sicilia (fonte: https://www.unictmagazine.unict.it/)"
+                }
+              ]
+            }
           },
           {
             "id": "mattarella-marcinelle",
