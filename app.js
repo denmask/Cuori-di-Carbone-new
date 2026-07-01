@@ -57,6 +57,19 @@ function findArticleById(id) {
     return null;
 }
 
+// Ricerca del minatore in evidenza tramite slug per la pagina di dettaglio dedicata
+function findMinatoreBySlug(slug) {
+    if (!globalData || !globalData.i_nostri_minatori) return null;
+    const mData = globalData.i_nostri_minatori;
+    const cleanSlug = String(slug).toLowerCase().trim().replace('minatore-', '');
+
+    if (mData.minatore_del_giorno && mData.minatore_del_giorno.dettaglio) {
+        const dett = mData.minatore_del_giorno.dettaglio;
+        if (dett.slug && dett.slug.toLowerCase() === cleanSlug) return dett;
+    }
+    return null;
+}
+
 function initThemeManager() {
     const toggleBtn = document.getElementById('theme-toggle-btn');
     const currentTheme = localStorage.getItem('theme') || 'dark';
@@ -159,6 +172,13 @@ function buildApplication(data) {
 }
 
 function executeRouter(viewId, data) {
+    // Caso speciale: il link "Contattaci" punta al footer, non è una vista del router
+    if (viewId === 'contatti') {
+        const contattiEl = document.getElementById('contatti');
+        if (contattiEl) contattiEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+    }
+
     const mainContainer = document.getElementById('view-container');
     if (!mainContainer) return;
     
@@ -317,15 +337,16 @@ function executeRouter(viewId, data) {
                 <section class="container">
                     <h1 style="font-size:3rem; text-align:center; margin-bottom:40px;">${mData.title}</h1>
                     
-                    <div class="minatore-day-card">
+                    <a href="${mData.minatore_del_giorno.dettaglio ? '#minatore-' + mData.minatore_del_giorno.dettaglio.slug : '#'}" class="minatore-day-card minatore-day-card-link">
                         <div class="minatore-day-img-box" style="background-image: url('${fixImagePath(mData.minatore_del_giorno.image)}'); background-size: cover; background-position: center; min-height: 220px;"></div>
                         <div class="minatore-day-content">
                             <span class="badge-day">${mData.minatore_del_giorno.label}</span>
                             <h2>${mData.minatore_del_giorno.name}</h2>
                             <div class="origin-tag">${mData.minatore_del_giorno.origin}</div>
                             <p style="font-size:0.95rem; line-height:1.6;">${mData.minatore_del_giorno.text}</p>
+                            ${mData.minatore_del_giorno.dettaglio ? '<span class="blog-readmore-btn">Leggi la sua storia</span>' : ''}
                         </div>
-                    </div>
+                    </a>
 
                     <div style="text-align:center; margin:50px 0;">
                         <h2>${mData.subtitle}</h2>
@@ -362,7 +383,7 @@ function executeRouter(viewId, data) {
                             <h2>${cat.title}</h2>
                             <p>${cat.text}</p>
                             <div>
-                                <a href="#" class="btn-evt ${btnClass}">${cat.button_text}</a>
+                                <a href="#curiosi-di-carbone" class="btn-evt ${btnClass}">${cat.button_text}</a>
                             </div>
                         </div>
                         <div class="evento-image-col">
@@ -429,6 +450,100 @@ function executeRouter(viewId, data) {
                 </section>
             `;
         }
+        // Pagina di dettaglio/biografia completa di un minatore (es. Mario Todeschi)
+        else if (String(viewId).startsWith('minatore-') || findMinatoreBySlug(viewId)) {
+            const dett = findMinatoreBySlug(viewId);
+
+            if (!dett) {
+                mainContainer.innerHTML = '<section class="container"><h1>Minatore non trovato</h1><p>Verifica la corrispondenza dello slug nel file data.json</p></section>';
+                return;
+            }
+
+            let inBreveHTML = '';
+            if (Array.isArray(dett.in_breve)) {
+                dett.in_breve.forEach(voce => {
+                    inBreveHTML += `<li>${voce}</li>`;
+                });
+            }
+
+            let cronologiaHTML = '';
+            if (Array.isArray(dett.cronologia)) {
+                dett.cronologia.forEach(tappa => {
+                    cronologiaHTML += `
+                        <div class="cronologia-item">
+                            <span class="cronologia-periodo">${tappa.periodo}</span>
+                            <span class="cronologia-testo">${tappa.testo}</span>
+                        </div>
+                    `;
+                });
+            }
+
+            let biografiaHTML = '';
+            if (Array.isArray(dett.biografia)) {
+                dett.biografia.forEach(par => {
+                    biografiaHTML += `<p>${par}</p>`;
+                });
+            }
+
+            let testimonianzaHTML = '';
+            if (Array.isArray(dett.testimonianza)) {
+                dett.testimonianza.forEach(par => {
+                    testimonianzaHTML += `<p>${par}</p>`;
+                });
+            }
+
+            mainContainer.innerHTML = `
+                <section class="container minatore-dettaglio-page">
+                    <a href="#i-nostri-minatori" class="article-back-link">← Torna a I Nostri Minatori</a>
+
+                    <div class="minatore-dett-header">
+                        <span class="article-full-category">${dett.breadcrumb || ''}</span>
+                        <h1>${dett.nome || ''}</h1>
+                        ${dett.citazione ? `<p class="minatore-dett-citazione">${dett.citazione}</p>` : ''}
+                    </div>
+
+                    <div class="minatore-dett-grid">
+                        <div class="minatore-dett-media">
+                            ${dett.immagine ? `<img src="${fixImagePath(dett.immagine)}" alt="${dett.nome || ''}" class="minatore-dett-img">` : ''}
+                            ${dett.didascalia_immagine ? `<p class="minatore-dett-caption">${dett.didascalia_immagine}</p>` : ''}
+                            ${inBreveHTML ? `
+                                <div class="minatore-dett-box-white">
+                                    <div class="minatore-dett-box-label">In breve</div>
+                                    <ul class="minatore-dett-inbreve-list">${inBreveHTML}</ul>
+                                </div>
+                            ` : ''}
+                        </div>
+                        <div class="minatore-dett-bio">
+                            ${biografiaHTML}
+                        </div>
+                    </div>
+
+                    ${cronologiaHTML ? `
+                        <div class="minatore-dett-box-white minatore-dett-cronologia">
+                            <div class="minatore-dett-box-label">Cronologia</div>
+                            ${cronologiaHTML}
+                        </div>
+                    ` : ''}
+
+                    ${testimonianzaHTML ? `
+                        <div class="article-full-section minatore-dett-testimonianza">
+                            <h2>${dett.testimonianza_titolo || 'La testimonianza'}</h2>
+                            ${testimonianzaHTML}
+                            ${dett.citazione_finale ? `
+                                <div class="minatore-dett-quote-box">
+                                    <p>${dett.citazione_finale}</p>
+                                    ${dett.citazione_finale_autore ? `<div class="minatore-dett-quote-author">${dett.citazione_finale_autore}</div>` : ''}
+                                </div>
+                            ` : ''}
+                        </div>
+                    ` : ''}
+
+                    <div class="article-full-footer">
+                        <a href="#i-nostri-minatori" class="btn-back-articles">Torna a I Nostri Minatori</a>
+                    </div>
+                </section>
+            `;
+        }
         // Intercettiamo i click sui singoli articoli in modo sicuro
         else if (String(viewId).startsWith('article-') || findArticleById(viewId)) {
             const articleId = String(viewId).replace('article-', '');
@@ -475,6 +590,9 @@ function executeRouter(viewId, data) {
                                 contentHTML += `<img src="${fixImagePath(img)}" alt="${section.heading || ''}" class="article-full-img">`;
                             }
                         });
+                        if (section.images.length > 0 && section.images_caption) {
+                            contentHTML += `<p class="article-full-img-caption">${section.images_caption}</p>`;
+                        }
                     }
                     
                     contentHTML += `</div>`;

@@ -400,6 +400,181 @@ body {
     margin-bottom: 15px; 
 }
 
+.minatore-day-card-link {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.minatore-day-card-link .blog-readmore-btn {
+    display: inline-block;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.article-full-img-caption {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+    margin-top: -18px;
+    margin-bottom: 25px;
+}
+
+.quote-highlight {
+    display: block;
+    font-style: italic;
+    color: var(--color-amber);
+    border-left: 3px solid var(--color-amber);
+    padding: 12px 20px;
+    margin: 22px 0;
+    line-height: 1.7;
+}
+
+.quote-highlight small {
+    display: block;
+    margin-top: 8px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+}
+
+/* Pagina di dettaglio completa del minatore (biografia, cronologia, testimonianza) */
+.minatore-dettaglio-page {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.minatore-dett-header {
+    margin-bottom: 30px;
+}
+
+.minatore-dett-header h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin: 12px 0 10px 0;
+    line-height: 1.2;
+}
+
+.minatore-dett-citazione {
+    color: var(--color-text-muted);
+    font-style: italic;
+    font-size: 1.05rem;
+}
+
+.minatore-dett-grid {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 45px;
+    margin-bottom: 40px;
+    align-items: start;
+}
+
+.minatore-dett-img {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.minatore-dett-caption {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+    margin-bottom: 25px;
+}
+
+.minatore-dett-bio p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    margin-bottom: 22px;
+    color: var(--color-text-muted);
+}
+
+.minatore-dett-box-white {
+    background-color: var(--color-panel-bg);
+    color: var(--color-panel-text);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.minatore-dett-cronologia {
+    margin-bottom: 45px;
+}
+
+.minatore-dett-box-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 15px;
+}
+
+.minatore-dett-inbreve-list {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.minatore-dett-inbreve-list li {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.minatore-dett-cronologia .cronologia-item {
+    display: flex;
+    gap: 12px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.minatore-dett-cronologia .cronologia-periodo {
+    font-weight: 700;
+    min-width: 130px;
+}
+
+.minatore-dett-testimonianza p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--color-text-muted);
+    font-style: italic;
+    margin-bottom: 22px;
+}
+
+.minatore-dett-quote-box {
+    background-color: var(--color-surface);
+    border-radius: 14px;
+    padding: 25px 30px;
+    margin-top: 20px;
+}
+
+.minatore-dett-quote-box p {
+    font-style: italic;
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+    color: var(--color-text-pure);
+}
+
+.minatore-dett-quote-author {
+    color: var(--color-text-muted);
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .minatore-dett-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .minatore-dett-header h1 {
+        font-size: 2rem;
+    }
+}
+
 .stats-panel-white { 
     background-color: var(--color-panel-bg); 
     color: var(--color-panel-text); 
@@ -631,8 +806,20 @@ body {
 
 .diario-slider { 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    grid-template-columns: repeat(4, 1fr); 
     gap: 25px; 
+}
+
+@media (max-width: 1024px) {
+    .diario-slider {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 560px) {
+    .diario-slider {
+        grid-template-columns: 1fr;
+    }
 }
 
 .diario-card { 
