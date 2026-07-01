@@ -368,6 +368,52 @@
         "sottotitolo_sezione": "Riflessioni, ricorrenze e memoria collettiva.",
         "articoli": [
           {
+            "id": "nasce-cuori-di-carbone-incontra",
+            "title": "Nasce “Cuori di Carbone incontra…”: un nuovo ciclo di appuntamenti per custodire la memoria dei minatori",
+            "date": "14 Febbraio 2026",
+            "author": "Redazione di Cuori di Carbone",
+            "category": "Memorie e Orizzonti",
+            "excerpt": "Debutta “Cuori di Carbone incontra…”: al via un nuovo percorso culturale sulla memoria dei minatori. Il 6 marzo 2026 primo appuntamento con Roberta Sorgato all'Osteria Salmaso di Paludo di Latisana.",
+            "image": "images/cuoridicarbone.webp"
+          },
+          {
+            "id": "epifania-2026",
+            "title": "L'Epifania: quando finiscono le feste, resta la memoria",
+            "date": "6 Gennaio 2026",
+            "author": "Andrea Campagnolo",
+            "category": "Memorie e Orizzonti",
+            "excerpt": "L'Epifania segna la fine delle feste e il ritorno alla quotidianità. Per i minatori italiani emigrati in Belgio, però, non esistevano giorni diversi dagli altri: la miniera non si fermava e il freddo dell'inverno rendeva il lavoro nelle baracche ancora più duro.",
+            "image": "images/minatori-epifania.webp",
+            "content": {
+              "intro": "L'Epifania è un giorno di passaggio. Un giorno che segna una fine, ma anche un ritorno. Le luci si spengono, le tavole tornano vuote, gli addobbi vengono riposti. Si ricomincia.",
+              "sections": [
+                {
+                  "heading": "Il tempo che non si fermava",
+                  "text": "Per i minatori italiani emigrati in Belgio, l'Epifania non aveva un volto particolare. Non era un giorno diverso dagli altri. Il lavoro in miniera non seguiva il ritmo delle feste. Sotto terra non c'erano calendari appesi al muro, né giorni segnati in rosso. C'erano solo turni, buio, polvere e silenzio. Mentre in superficie si smontavano i presepi e si tornava alla normalità, nelle gallerie il tempo era rimasto sempre lo stesso. Un tempo fatto di fatica quotidiana, di gesti ripetuti, di corpi che imparavano a resistere.",
+                  "images": [
+                    "images/marcinelle-foto-gruppo.webp"
+                  ]
+                },
+                {
+                  "heading": "Le feste lontane da casa",
+                  "text": "Per molti minatori, le feste erano soprattutto assenza. Assenza di casa. Assenza della famiglia. Assenza dei figli che crescevano lontano. L'Epifania arrivava spesso con una lettera, con una foto piegata, con un pacco spedito dall'Italia. Piccoli segni che rompevano la monotonia dei giorni uguali. Un dolce che sapeva di casa. Un rosario. Una parola scritta con grafia incerta, ma piena di significato. Era così che si teneva vivo il legame: attraverso la memoria, anche quando il corpo era lontano.",
+                  "images": [
+                    "images/minatori-a-lavoro.webp"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "vite-dietro-numeri",
+            "title": "Le vite dietro ai numeri",
+            "date": "31 Dicembre 2025",
+            "author": "Andrea Campagnolo",
+            "category": "Memorie e Orizzonti",
+            "excerpt": "Dietro ogni cifra dell'archivio di Cuori di Carbone c'è una storia, un volto, una famiglia. Un bilancio di fine anno per raccontare cosa significano davvero i numeri raccolti finora.",
+            "image": "images/more-from5.webp"
+          },
+          {
             "id": "santa-barbara-latisana-2025",
             "title": "Successo alla 1ª Cerimonia di Santa Barbara a Latisana",
             "date": "16 Dicembre 2025",
@@ -416,32 +462,13 @@
             }
           },
           {
-            "id": "epifania-2026",
-            "title": "L'Epifania: quando finiscono le feste, resta la memoria",
-            "date": "6 Gennaio 2026",
+            "id": "prima-dopo-marcinelle",
+            "title": "Prima e dopo Marcinelle: le altre tragedie del carbone belga",
+            "date": "11 Novembre 2025",
             "author": "Andrea Campagnolo",
             "category": "Memorie e Orizzonti",
-            "excerpt": "L'Epifania segna la fine delle feste e il ritorno alla quotidianità. Per i minatori italiani emigrati in Belgio, però, non esistevano giorni diversi dagli altri: la miniera non si fermava e il freddo dell'inverno rendeva il lavoro nelle baracche ancora più duro.",
-            "image": "images/minatori-epifania.webp",
-            "content": {
-              "intro": "L'Epifania è un giorno di passaggio. Un giorno che segna una fine, ma anche un ritorno. Le luci si spengono, le tavole tornano vuote, gli addobbi vengono riposti. Si ricomincia.",
-              "sections": [
-                {
-                  "heading": "Il tempo che non si fermava",
-                  "text": "Per i minatori italiani emigrati in Belgio, l'Epifania non aveva un volto particolare. Non era un giorno diverso dagli altri. Il lavoro in miniera non seguiva il ritmo delle feste. Sotto terra non c'erano calendari appesi al muro, né giorni segnati in rosso. C'erano solo turni, buio, polvere e silenzio. Mentre in superficie si smontavano i presepi e si tornava alla normalità, nelle gallerie il tempo era rimasto sempre lo stesso. Un tempo fatto di fatica quotidiana, di gesti ripetuti, di corpi che imparavano a resistere.",
-                  "images": [
-                    "images/marcinelle-foto-gruppo.webp"
-                  ]
-                },
-                {
-                  "heading": "Le feste lontane da casa",
-                  "text": "Per molti minatori, le feste erano soprattutto assenza. Assenza di casa. Assenza della famiglia. Assenza dei figli che crescevano lontano. L'Epifania arrivava spesso con una lettera, con una foto piegata, con un pacco spedito dall'Italia. Piccoli segni che rompevano la monotonia dei giorni uguali. Un dolce che sapeva di casa. Un rosario. Una parola scritta con grafia incerta, ma piena di significato. Era così che si teneva vivo il legame: attraverso la memoria, anche quando il corpo era lontano.",
-                  "images": [
-                    "images/minatori-a-lavoro.webp"
-                  ]
-                }
-              ]
-            }
+            "excerpt": "Marcinelle non fu un caso isolato. Nella storia mineraria belga si contano decine di altri disastri, spesso dimenticati, che hanno segnato la vita delle comunità italiane emigrate.",
+            "image": "images/more-from8.webp"
           },
           {
             "id": "donne-carbone",
@@ -520,7 +547,7 @@
                   "text": "Il volto più duro di quell'inferno era quello dei carusi, i bambini-schiavi delle miniere. Avevano tra i 7 e i 12 anni e venivano affidati ai piconieri in cambio di poche lire. Il loro lavoro era trasportare sulle spalle sacchi di minerale da 30 o 40 chili, in cunicoli caldi, scivolosi e quasi privi d'aria. Molti non superavano i vent'anni: la polvere e lo sforzo li consumavano prima del tempo. Ma accanto ai bambini c'erano anche intere famiglie che vivevano del lavoro minerario. Tra queste, la famiglia Caliota, originario di Villarosa (Enna). Il padre e gli zii di Lillo avevano lavorato per anni nelle solfare della zona, respirando il gas acre, trasportando zolfo rovente in spalle bruciate.<br><br><span class=\"quote-highlight\">“Mio padre aveva solo sei anni quando scese per la prima volta nella miniera di zolfo. La candela tremava nella mano troppo piccola per il secchio che portava. L'aria sapeva di fuoco e polvere, e la paura non faceva rumore. Come lui, migliaia di bambini siciliani lavoravano sottoterra, venduti alla miseria prima ancora di imparare a scrivere il proprio nome.”<br><small>TRATTO DALLA TESTIMONIANZA DELLA FAMIGLIA CALIOTA, RACCOLTA IL 26 OTTOBRE 2025</small></span>Per loro, la miniera era l'unica possibilità di sopravvivere. Eppure, già allora, la Sicilia sotterranea sognava di fuggire altrove — verso il Belgio, la speranza di una paga migliore. Gli uomini della famiglia Caliota conoscevano il buio e il peso della terra: quando anni dopo sarebbero partiti per le miniere di carbone, si sarebbero portati dentro il ricordo acre dello zolfo.",
                   "images": [
                     "images/immagine-3-zolfo.webp",
-                    "images/"
+                    "images/immagine-4-zolfo-mappa.webp"
                   ],
                   "images_caption": "1923/25, Sicilia – Esterno di una miniera del nisseno (fonte: zarabaza.it) · Mappa: “Sicilia - L'estrazione mineraria dello zolfo (secc. XIX-XX)” di Leone Venticinque, creata con Google My Maps"
                 },
@@ -570,16 +597,25 @@
             "author": "Redazione di Cuori di Carbone",
             "category": "Voci e Interviste",
             "excerpt": "Nella mattinata del 9 febbraio 2026, il progetto culturale \"Cuori di Carbone\" è stato ospite del programma radiofonico Cjargne, in onda su Radio Spazio, raccontando gli sviluppi e i nuovi archivi raccolti sul territorio friulano.",
-            "image": "images/radio_card.jpg"
+            "image": "images/more-from1.webp"
+          },
+          {
+            "id": "incontra-roberta-sorgato",
+            "title": "Dove la memoria prende voce: “Cuori di Carbone incontra… Roberta Sorgato”",
+            "date": "8 Marzo 2026",
+            "author": "Redazione di Cuori di Carbone",
+            "category": "Voci e Interviste",
+            "excerpt": "Paludo di Latisana, 6 marzo 2026 – Non è stata solo una presentazione, né un semplice incontro culturale. La serata organizzata nell'ambito del format Cuori di Carbone incontra… si è trasformata in qualcosa di più profondo: un viaggio dentro la memoria, guidato dalle parole e dalle testimonianze di chi quella memoria la porta dentro da sempre. Ospite dell'incontro è stata la scrittrice Roberta Sorgato, autrice del romanzo Cuori nel Pozzo, ma soprattutto figlia di un minatore. Ed è proprio da qui che la serata ha trovato il suo cuore più autentico.",
+            "image": "images/incontrorobertasorgato.webp"
           },
           {
             "id": "natale-emigrati",
-            "title": "Sotto lo same cielo d'inverno: il Natale visto dai figli dagli emigrati italiani in Belgio",
+            "title": "Sotto lo stesso cielo d'inverno: il Natale visto dai figli dagli emigrati italiani in Belgio",
             "date": "25 Dicembre 2025",
             "author": "Andrea Campagnolo",
             "category": "Voci e Interviste",
             "excerpt": "Ci sono Natali che non brillano per luci o regali, ma per ciò che riescono a lasciare nel tempo. In alcune città operaie del Belgio, le famiglie italiane ricreavano il calore di casa nel freddo dei distretti minerari.",
-            "image": "images/natale_card.jpg"
+            "image": "images/more-from6.webp"
           },
           {
             "id": "giovanni-mario",
