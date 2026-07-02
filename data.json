@@ -787,7 +787,8 @@
             "author": "Andrea Campagnolo",
             "category": "Voci e Interviste",
             "excerpt": "Nata dal destino e dalla tragedia di Marcinelle, Ivana Di Betta racconta la vita del padre Giuseppe, minatore friulano sopravvissuto miracolosamente all'esplosione del Bois du Cazier l'8 agosto del 1956.",
-            "image": "images/26-ottobre-1.webp",
+            "image": [ "images/26-ottobre-1.webp"
+            ],
             "content": {
               "intro": "Una firma falsa per fuggire dalla fame, un turno cambiato per amore e un destino che separa la vita dalla morte. È la storia di Giuseppe Di Betta, minatore friulano partito nel 1947 verso il Belgio, sopravvissuto al disastro di Marcinelle e padre di Ivana, che oggi ne custodisce la memoria con la forza e la delicatezza di chi è nata da un miracolo.",
               "sections": [
@@ -795,7 +796,7 @@
                   "heading": "La fame e la fuga",
                   "text": "Nell'Italia del dopoguerra la fame era più profonda del carbone. Nel 1946, con il trattato “uomini in cambio di carbone”, migliaia di italiani partirono verso il Belgio per riaccendere la ricostruzione europea. Tra loro c'era Giuseppe Di Betta, il più giovane di quattordici fratelli di Montreprato di Nimis (Udine). Aveva solo diciassette anni e la fame addosso. Il padre si oppose: “Io no ti mandi a muri!” Ma lui partì lo stesso, falsificando la firma paterna grazie a un compaesano ubriaco. «A Milano, durante le visite mediche, mangiò per la prima volta tre volte in un giorno — ricorda Ivana — e capì che non avrebbe più voltato indietro.» Il 27 ottobre 1947 firmò il contratto con la Federazione Carbonifera Belga. Da quel momento, la vita di un ragazzo friulano si legò per sempre alle viscere della terra.<br><br>Le baracche di metallo che lo accolsero in Belgio erano fredde e disumane. Nate come campi di concentramento tedeschi, erano diventate alloggi improvvisati per i nuovi emigranti italiani: stanze strette, letti di ferro, stufe arrugginite e vetri appannati dal fiato della fatica. Il giorno cominciava prima dell'alba. Dodici ore di lavoro continuo, nessuna pausa, un pasto veloce e la polvere nei polmoni che non lasciava scampo. La discesa in miniera era un rituale di paura: il rumore dei cavi d'acciaio, le gabbie che scendevano a oltre mille metri sotto terra, il buio che divorava la luce delle lampade. Molti, al primo turno, cedevano al panico e risalivano per non tornare mai più. Giuseppe no. Resistette. Con il tempo guadagnò il rispetto dei compagni, tanto che la squadra con cui lavorava prese il suo nome: Équipe Di Betta. Lavoravano spalla a spalla, scavando vene di carbone larghe meno di un metro, sdraiati, con la schiena che gridava. La dignità aveva un prezzo alto. Fuori dalla miniera, i cartelli erano chiari: “Vietato l'ingresso ai cani e agli italiani.” Nelle taverne e nei bar, i belgi li guardavano come stranieri. Ma sotto terra, tra il rumore dei picconi e il respiro corto, le differenze si annullavano. Lì tutti erano uguali davanti alla fatica, alla fame e al buio.",
                   "images": [
-                    "images/26-ottobre-2.webp"
+                    "images/26-ottobre-3.webp"
                   ],
                   "images_caption": "Di Betta Giuseppe (1929–1976), minatore di Montreprato di Nimis (Udine)"
                 },
@@ -803,8 +804,7 @@
                   "heading": "L'amore e il destino",
                   "text": "Nel 1955, durante una licenza in Friuli, Giuseppe tornò a casa con il volto scavato ma lo sguardo buono. Fu allora che conobbe Mafalda, una ragazza dal sorriso gentile. Si sposarono in chiesa, davanti a una piccola comunità che li salutò tra lacrime e auguri, e ripartirono insieme verso il Belgio, carichi di speranze e valigie leggere. Un anno dopo, Mafalda era incinta. Il 7 agosto 1956, a poche settimane dal parto, accusò forti dolori. Giuseppe avrebbe dovuto entrare nel primo turno di lavoro alla miniera del Bois du Cazier, ma decise di restare con lei. Chiese a un amico di sostituirlo, promettendo che avrebbe ricambiato il favore il giorno dopo. L'8 agosto 1956 la miniera esplose. Un lampo sotterraneo, poi il fumo, le fiamme, le urla. 262 uomini morirono. 136 erano italiani. Giuseppe si salvò. Il suo amico no. «Mamma raccontava che papà sentì la sirena e corse in moto verso la miniera. Tornò dopo tre giorni, distrutto. Non si perdonò mai di essere vivo.»<br><br>Nacque Ivana. Ma il sorriso del padre non fu mai più lo stesso. Ogni volta che parlava di quel giorno, la voce gli si spezzava: “Lui è rimasto là, io non so perché sono qui.” Da allora, per Giuseppe, ogni respiro era un debito di memoria.",
                   "images": [
-                    "images/26-ottobre-3.webp",
-                    "images/26-ottobre-4.webp"
+                    "images/26-ottobre-6.webp"
                   ],
                   "images_caption": "Tre minatori italiani dopo la risalita, prima della doccia – Foto proveniente dagli archivi della famiglia Di Betta · Giuseppe (cerchiato in blu) con alcuni amici italiani – Foto proveniente dagli archivi della famiglia Di Betta"
                 },
@@ -817,7 +817,7 @@
                   "heading": "La memoria di una figlia",
                   "text": "Oggi Ivana Di Betta continua quel filo interrotto. Le sue parole non sono mai solo ricordi: sono un passaggio di testimone, un'eredità morale che illumina il presente. Il 15 maggio 2025, all'evento Cuori di Carbone – Storia di Fatica e Speranza tra le profondità delle Miniere Belghe, la sala della ex Stazione Ippica di Latisana si è fatta silenziosa mentre Ivana parlava. Solo la sua voce, ferma e dolce, riempiva l'aria. «Se sono qui, è perché quel giorno un uomo ha accettato di fare un turno al posto di mio padre. Mio padre è sopravvissuto, ma dentro di sé non uscì mai da quella miniera.» Quelle parole, pronunciate davanti ai figli e ai nipoti di altri minatori, sono diventate un gesto di riconciliazione tra memoria e destino.<br><br><span class=\"quote-testimonianza\">Un turno e due vite, ma anche due generazioni che si ritrovano in un unico respiro.</span>",
                   "images": [
-                    "images/ivana-marcinelle-ivana-convegno.jpg"
+                    "images/26-ottobre-7.webp"
                   ],
                   "images_caption": "Ivana durante il suo intervento al convegno dell'evento di Latisana del 15 maggio 2025 © Emanuele Franzò"
                 }

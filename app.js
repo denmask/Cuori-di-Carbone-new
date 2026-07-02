@@ -179,6 +179,7 @@ document.addEventListener('click', (e) => {
     if (printBtn) window.print();
 });
 
+// Gestione del Tema (Chiaro/Scuro)
 function initThemeManager() {
     const toggleBtn = document.getElementById('theme-toggle-btn');
     const currentTheme = localStorage.getItem('theme') || 'dark';
@@ -196,10 +197,16 @@ function initThemeManager() {
     }
 }
 
-// FUNZIONE DI SICUREZZA PER I PERCORSI DELLE IMMAGINI (INTELLIGENTE)
+// FUNZIONE DI SICUREZZA PER I PERCORSI DELLE IMMAGINI (INTELLIGENTE - AGGIORNATA)
 function fixImagePath(path) {
     if (!path) return '';
     
+    // Se è un array (es. più immagini salvate nel JSON), prendiamo la prima di default per non rompere il layout
+    if (Array.isArray(path)) {
+        if (path.length === 0) return '';
+        path = path[0];
+    }
+
     // Se è già un URL assoluto web, lo lasciamo intatto
     if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
@@ -211,12 +218,11 @@ function fixImagePath(path) {
     if (cleanPath.startsWith('/')) cleanPath = cleanPath.slice(1);
 
     // Se il percorso non contiene esplicitamente la parola "images/", la aggiungiamo all'inizio.
-    // Questo risolve il bug dei file che iniziano con caratteri speciali (es. "_DSC6481bis.jpg")
     if (!cleanPath.toLowerCase().startsWith('images/')) {
         cleanPath = 'images/' + cleanPath;
     }
 
-    // Percorso relativo: funziona sia su GitHub Pages che su Live Server locale
+    // Percorso relativo finale
     return './' + cleanPath;
 }
 
@@ -281,7 +287,6 @@ function buildApplication(data) {
 }
 
 function executeRouter(viewId, data) {
-    // Caso speciale: il link "Contattaci" punta al footer, non è una vista del router
     if (viewId === 'contatti') {
         const contattiEl = document.getElementById('contatti');
         if (contattiEl) contattiEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -293,7 +298,6 @@ function executeRouter(viewId, data) {
     
     window.scrollTo({ top: 0, behavior: 'smooth' });
     
-    // Inseriamo un blocco try/catch generale per intercettare crash improvvisi
     try {
         if (viewId === 'home') {
             let statsHTML = '';
@@ -559,7 +563,6 @@ function executeRouter(viewId, data) {
                 </section>
             `;
         }
-        // Pagina di dettaglio/biografia completa di un minatore (es. Mario Todeschi)
         else if (String(viewId).startsWith('minatore-') || findMinatoreBySlug(viewId)) {
             const dett = findMinatoreBySlug(viewId);
 
@@ -653,7 +656,6 @@ function executeRouter(viewId, data) {
                 </section>
             `;
         }
-        // Intercettiamo i click sui singoli articoli in modo sicuro
         else if (String(viewId).startsWith('article-') || findArticleById(viewId)) {
             const articleId = String(viewId).replace('article-', '');
             const article = findArticleById(articleId);
@@ -681,7 +683,6 @@ function executeRouter(viewId, data) {
                 contentHTML += `<img src="${fixImagePath(article.image)}" class="article-full-cover" alt="${article.title}">`;
             }
 
-            // Validazione rigorosa per evitare crash se i blocchi JSON sono malformati o mancano di sezioni
             if (article.content && Array.isArray(article.content.sections)) {
                 contentHTML += `<p class="article-full-intro">${article.content.intro || ''}</p>`;
                 
@@ -704,7 +705,6 @@ function executeRouter(viewId, data) {
                         }
                     }
 
-                    // Supporto embed video YouTube all'interno di una sezione dell'articolo
                     if (section.video_youtube_id) {
                         contentHTML += `
                             <div class="article-video-embed">
@@ -742,12 +742,10 @@ function executeRouter(viewId, data) {
                 </section>
             `;
 
-            // Prepariamo l'elenco di tutti gli articoli (esclusi quello corrente) ordinati dal più recente
             const allArticles = getAllArticles(data)
                 .filter(a => a && a.id !== article.id)
                 .sort((a, b) => parseItalianDate(b.date) - parseItalianDate(a.date));
 
-            // Blocco "Rispondi" - form commenti (statico, di sola interfaccia) + eventuali commenti già presenti
             let existingCommentsHTML = '';
             if (Array.isArray(article.comments) && article.comments.length > 0) {
                 article.comments.forEach(c => {
@@ -780,7 +778,6 @@ function executeRouter(viewId, data) {
                 </section>
             `;
 
-            // Blocco "Leggi gli ultimi articoli" - i 3 articoli più recenti
             const ultimiArticoli = allArticles.slice(0, 3);
             let ultimiArticoliHTML = '';
             ultimiArticoli.forEach(a => {
@@ -802,7 +799,6 @@ function executeRouter(viewId, data) {
                 </section>
             ` : '';
 
-            // Blocco "More from the blog" - griglia estesa di tutti gli altri articoli, stessa importanza del footer
             const moreFromBlog = allArticles.slice(0, 8);
             let moreFromBlogHTML = '';
             moreFromBlog.forEach(a => {
