@@ -747,7 +747,24 @@ function executeRouter(viewId, data) {
                 .filter(a => a && a.id !== article.id)
                 .sort((a, b) => parseItalianDate(b.date) - parseItalianDate(a.date));
 
-            // Blocco "Rispondi" - form commenti (statico, di sola interfaccia)
+            // Blocco "Rispondi" - form commenti (statico, di sola interfaccia) + eventuali commenti già presenti
+            let existingCommentsHTML = '';
+            if (Array.isArray(article.comments) && article.comments.length > 0) {
+                article.comments.forEach(c => {
+                    existingCommentsHTML += `
+                        <div class="existing-comment-item">
+                            <div class="existing-comment-author">${c.author}</div>
+                            <div class="existing-comment-date">${c.date}</div>
+                            <p class="existing-comment-text">${c.text}</p>
+                        </div>
+                    `;
+                });
+                existingCommentsHTML = `
+                    <div class="existing-comments-heading">Una risposta a “${article.title}”</div>
+                    <div class="existing-comments-list">${existingCommentsHTML}</div>
+                `;
+            }
+
             const commentsHTML = `
                 <section class="article-comments-section">
                     <div class="container article-full-page">
@@ -758,6 +775,7 @@ function executeRouter(viewId, data) {
                                 <button type="submit" class="btn-comment-submit">Commenta</button>
                             </div>
                         </form>
+                        ${existingCommentsHTML}
                     </div>
                 </section>
             `;

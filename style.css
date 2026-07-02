@@ -439,6 +439,50 @@ body {
     font-size: 0.75rem;
 }
 
+/* Citazione breve di testimonianza (più discreta del quote-highlight ambra) */
+.quote-testimonianza {
+    display: block;
+    font-style: italic;
+    color: var(--color-text-muted);
+    border-left: 2px solid var(--navbar-border);
+    padding: 10px 20px;
+    margin: 18px 0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* Commenti già presenti sotto il form "Rispondi" */
+.existing-comments-heading {
+    font-family: var(--font-sans);
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin: 40px 0 20px 0;
+    color: var(--color-text-pure);
+}
+
+.existing-comment-item {
+    border-top: 1px solid var(--navbar-border);
+    padding: 20px 0;
+}
+
+.existing-comment-author {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--color-text-pure);
+}
+
+.existing-comment-date {
+    font-size: 0.8rem;
+    color: var(--color-amber);
+    margin-bottom: 10px;
+}
+
+.existing-comment-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+}
+
 /* Pagina di dettaglio completa del minatore (biografia, cronologia, testimonianza) */
 .minatore-dettaglio-page {
     max-width: 900px;
