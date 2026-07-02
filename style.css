@@ -988,6 +988,30 @@ body {
     font-style: italic;
 }
 
+@keyframes cdcFadeInUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.article-full-header,
+.article-full-cover,
+.article-full-section,
+.article-video-embed,
+.article-share-like-wrap {
+    animation: cdcFadeInUp 0.6s ease both;
+}
+
+.article-full-cover { animation-delay: 0.05s; }
+.article-full-section:nth-of-type(1) { animation-delay: 0.1s; }
+.article-full-section:nth-of-type(2) { animation-delay: 0.18s; }
+.article-full-section:nth-of-type(3) { animation-delay: 0.26s; }
+.article-full-section:nth-of-type(4) { animation-delay: 0.34s; }
+
+.share-icon-btn,
+.btn-like-article {
+    animation: none;
+}
+
 .article-full-section {
     margin-bottom: 50px;
 }
@@ -1744,6 +1768,167 @@ body {
 /* ============================================= */
 /* SEZIONI ARTICOLO: RISPONDI / ULTIMI ARTICOLI / MORE FROM THE BLOG */
 /* ============================================= */
+
+/* ===== VIDEO EMBED YOUTUBE NEGLI ARTICOLI ===== */
+.article-video-embed {
+    margin: 25px 0 10px 0;
+}
+
+.article-video-frame-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* Rapporto 16:9 */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    background-color: #000;
+}
+
+.article-video-frame-wrap iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.article-video-caption {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+    margin-top: 10px;
+}
+
+/* ===== BLOCCO CONDIVIDI + MI PIACE ===== */
+.article-share-like-wrap {
+    max-width: 780px;
+    margin: 45px auto 0 auto;
+    padding-top: 28px;
+    border-top: 1px solid var(--navbar-border);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.article-share-label {
+    display: block;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    color: var(--color-text-pure);
+}
+
+.share-icons-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.share-icon-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-surface-card);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.share-icon-btn svg {
+    width: 17px;
+    height: 17px;
+    fill: none;
+    stroke: var(--color-text-pure);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.25s ease, fill 0.25s ease;
+}
+
+.share-icon-btn:hover {
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    background-color: var(--color-amber);
+}
+
+.share-icon-btn:hover svg {
+    stroke: #1c1c1e;
+}
+
+.share-icon-whatsapp svg,
+.share-icon-telegram svg,
+.share-icon-facebook svg {
+    fill: var(--color-text-pure);
+    stroke: none;
+}
+
+.share-icon-whatsapp:hover { background-color: #25d366; }
+.share-icon-telegram:hover { background-color: #29a9eb; }
+.share-icon-facebook:hover { background-color: #1877f2; }
+.share-icon-whatsapp:hover svg,
+.share-icon-telegram:hover svg,
+.share-icon-facebook:hover svg { fill: #ffffff; }
+
+.article-like-block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-like-article {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 30px;
+    border: 1px solid var(--btn-dark-border);
+    background-color: transparent;
+    color: var(--color-text-pure);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-like-article .like-star {
+    color: var(--color-text-muted);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-like-article:hover {
+    border-color: var(--color-amber);
+    color: var(--color-amber);
+}
+
+.btn-like-article.is-liked {
+    background-color: var(--color-amber);
+    border-color: var(--color-amber);
+    color: #1c1c1e;
+}
+
+.btn-like-article.is-liked .like-star {
+    color: #1c1c1e;
+    transform: scale(1.2) rotate(-10deg);
+}
+
+.like-count-text {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+@media (max-width: 768px) {
+    .article-share-like-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
 
 .article-comments-section {
     border-top: 1px solid var(--navbar-border);

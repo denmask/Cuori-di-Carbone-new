@@ -582,7 +582,38 @@
             "author": "Redazione di Cuori di Carbone",
             "category": "Memorie e Orizzonti",
             "excerpt": "Il Presidente della Repubblica Sergio Mattarella ha reso oggi omaggio al Bois du Cazier, il sito minerario belga dove l'8 agosto 1956 si consumò una delle più grandi tragedie dell'emigrazione italiana, per non dimenticare il valore del lavoro.",
-            "image": "images/mattarella_card.jpg"
+            "image": "images/Mattarella1.webp",
+            "content": {
+              "intro": "Il Presidente della Repubblica Sergio Mattarella ha reso oggi omaggio al Bois du Cazier, il sito minerario dove l'8 agosto 1956 si consumò una delle più grandi tragedie del lavoro in Europa. In quell'incidente persero la vita 262 minatori, tra cui 136 italiani, emigrati in Belgio in cerca di un futuro migliore.",
+              "sections": [
+                {
+                  "heading": "L'omaggio del Capo dello Stato",
+                  "text": "Accolto dal Re Filippo e dalla Regina Mathilde del Belgio, il Presidente Sergio Mattarella ha deposto una corona d'alloro davanti al monumento commemorativo dedicato alle vittime, accompagnato da un momento di raccoglimento e dal saluto delle autorità belghe e italiane presenti. Al suo fianco, rappresentanti delle istituzioni, delegazioni di familiari dei minatori e alcuni superstiti di quella tragedia che, ancora oggi, continua a segnare la memoria collettiva di due nazioni. Nel suo messaggio, il Capo dello Stato ha voluto sottolineare come <span class=\"quote-highlight\">«il sacrificio e la dignità dei lavoratori che, con la loro fatica, hanno unito Italia e Belgio in una storia comune di dolore e speranza, restino un punto fermo nella coscienza europea»<br><small>SERGIO MATTARELLA, PRESIDENTE DELLA REPUBBLICA ITALIANA</small></span> Parole che hanno risuonato con forza davanti al pozzo n. 1 del Bois du Cazier, là dove il fumo e il silenzio di quel giorno del 1956 cambiarono per sempre il volto dell'emigrazione italiana.",
+                  "images": [
+                    "images/Mattarella2.webp"
+                  ],
+                  "images_caption": "Il Presidente della Repubblica Sergio Mattarella saluta due ex minatori al Bois du Cazier di Marcinelle. Accanto a lui, il Re Filippo del Belgio e la Regina Mathilde durante la cerimonia di commemorazione. Fonte: english.adnkronos.com"
+                },
+                {
+                  "heading": "Un luogo simbolo della solidarietà europea",
+                  "text": "La visita si inserisce nel solco delle commemorazioni che, da quasi settant'anni, mantengono viva la memoria di Marcinelle come luogo simbolo della solidarietà europea, del riscatto sociale e del prezzo pagato da intere generazioni di emigranti per la ricostruzione del dopoguerra. Non solo un gesto istituzionale, ma un richiamo morale: il lavoro, ha ricordato Mattarella, «deve sempre essere accompagnato da sicurezza, rispetto e dignità».",
+                  "images": [
+                    "images/Marcinelle1.webp"
+                  ],
+                  "images_caption": "La folla in attesa davanti al Bois du Cazier nei giorni della tragedia di Marcinelle. Fonte: panorama.it"
+                },
+                {
+                  "heading": "Il ricordo di 'Cuori di Carbone'",
+                  "text": "Nel giorno dell'omaggio presidenziale, anche “Cuori di Carbone” ha voluto tornare idealmente in quel luogo di memoria, condividendo un filmato d'archivio dell'Istituto Luce che restituisce la forza drammatica delle immagini originali della tragedia. È un modo per ridare voce a chi non tornò più in superficie, ma anche per rinnovare il legame ideale con i minatori del nostro territorio che partirono verso il Belgio con in tasca la speranza e nel cuore il dovere.<br><br>Marcinelle resta, oggi come allora, un monito e un simbolo universale: il lavoro non può e non deve mai essere pagato con la vita.",
+                  "images": [
+                  ],
+                  "images_caption": "I corpi dei minatori vengono riportati in superficie dalla miniera del Bois du Cazier. Fonte: culturaidentita.it",
+                  "video_youtube_id": "fo9t1zr5ci4",
+                  "video_title": "La tragica miniera belga.",
+                  "video_source": "Archivio Luce Cinecittà"
+                }
+              ]
+            }
           }
         ]
       },
@@ -597,7 +628,43 @@
             "author": "Redazione di Cuori di Carbone",
             "category": "Voci e Interviste",
             "excerpt": "Nella mattinata del 9 febbraio 2026, il progetto culturale \"Cuori di Carbone\" è stato ospite del programma radiofonico Cjargne, in onda su Radio Spazio, raccontando gli sviluppi e i nuovi archivi raccolti sul territorio friulano.",
-            "image": "images/more-from1.webp"
+            "image": "images/radio-spazio1.webp",
+            "content": {
+              "intro": "Nella mattinata del 9 febbraio 2026, il progetto culturale “Cuori di Carbone” è stato ospite del programma radiofonico Cjargne, in onda su Radio Spazio, durante la puntata speciale intitolata “Miniere e Minatori”, condotta da Novella Del Fabbro.",
+              "sections": [
+                {
+                  "heading": "Una puntata tra testimonianze e memoria",
+                  "text": "A distanza di tre mesi da quell'esperienza, restano ancora vive le emozioni di una trasmissione che ha saputo intrecciare testimonianze dirette, memoria storica e riflessioni sull'emigrazione friulana nel mondo minerario del secondo dopoguerra.<br><br>La partecipazione radiofonica ha rappresentato per Cuori di Carbone la prima uscita ufficiale del progetto all'interno di un programma radiofonico regionale, offrendo l'opportunità di raccontare al pubblico il lavoro di ricerca storica, raccolta documentale e valorizzazione delle testimonianze che il progetto porta avanti sul territorio friulano e veneto orientale.",
+                  "images": [
+                    "images/radio-spazio-2.webp"
+                  ],
+                  "images_caption": "Un momento della puntata speciale “Miniere e Minatori” andata in onda su Radio Spazio il 9 febbraio 2026. Da sinistra: la conduttrice Novella Del Fabbro, Benito Ortis, Andrea Campagnolo e Franco Iacob. © Alvise Campagnolo"
+                },
+                {
+                  "heading": "Gli ospiti in studio",
+                  "text": "Durante la puntata sono intervenuti Andrea Campagnolo, ideatore del progetto Cuori di Carbone; Franco Iacob, presidente dell'Ente Friuli nel Mondo, rientrato in quei giorni da un viaggio in Sudamerica; Benito Ortis, classe 1936, originario di Tarcento, emigrato nelle miniere di carbone del Belgio dal 1951 al 1956 per completare il contratto lavorativo del padre ammalato; e in collegamento telefonico Fausto Del Fabbro, classe 1936, originario di Forni Avoltri, che lavorò nel secondo dopoguerra nelle miniere d'oro del Sudafrica. Presente anche la sezione mandamentale A.I.E.M. – Associazione Italiana Ex Minatori di Latisana, guidata dal Maestro del Lavoro Alvise Campagnolo.<br><br>Nel corso della trasmissione si è parlato non solo delle miniere belghe, ma anche delle differenti rotte dell'emigrazione mineraria friulana, dalle cave aurifere sudafricane fino ai grandi flussi migratori verso il Belgio, offrendo agli ascoltatori uno spaccato umano e storico di straordinario valore. Particolarmente significativa è stata la presenza di ex minatori che hanno vissuto direttamente quell'esperienza, portando testimonianze autentiche legate alla fatica del lavoro minerario, al distacco dalla propria terra e alle difficili condizioni di vita affrontate dagli emigranti italiani.",
+                  "images": [
+                    "images/radio-spazio-3.webp"
+                  ],
+                  "images_caption": "Benito Ortis racconta gli anni trascorsi nelle miniere belghe davanti ai microfoni di Radio Spazio. © Alvise Campagnolo"
+                },
+                {
+                  "heading": "Il valore delle fonti storiche verificate",
+                  "text": "Uno degli aspetti centrali emersi durante la puntata è stato il valore delle fonti storiche verificate. Il progetto Cuori di Carbone, infatti, basa la propria attività su documenti originali, fotografie d'epoca, testimonianze familiari, archivi associativi e racconti diretti raccolti negli ultimi anni. Un lavoro di ricerca che mira non soltanto a ricordare, ma anche a restituire dignità storica alle vicende dei minatori friulani e delle loro famiglie.<br><br>Le testimonianze raccolte vengono confrontate con fonti documentarie ufficiali, pubblicazioni storiche, materiali conservati dalle associazioni minerarie e archivi familiari, così da garantire un racconto il più possibile accurato e rispettoso della verità storica. La partecipazione a Cjargne ha quindi rappresentato non soltanto un momento di divulgazione, ma anche un'importante occasione per sensibilizzare il pubblico sull'importanza della conservazione della memoria orale e documentale legata al mondo minerario.",
+                  "images": [
+                    "images/radio-spazio-4.webp"
+                  ],
+                  "images_caption": "Da sinistra: Franco Iacob, Andrea Campagnolo e Alvise Campagnolo accanto al gonfalone della sezione mandamentale A.I.E.M. di Latisana negli studi di Radio Spazio. © Alvise Campagnolo"
+                },
+                {
+                  "heading": "Un percorso che continua",
+                  "text": "A tre mesi da quella mattinata, Cuori di Carbone continua il proprio percorso culturale attraverso incontri, attività di ricerca, raccolta testimonianze e iniziative dedicate ai minatori friulani emigrati all'estero, affinché le loro storie possano continuare a essere conosciute anche dalle nuove generazioni.",
+                  "images": [
+                    "images/radio-spazio4.webp"
+                  ]
+                }
+              ]
+            }
           },
           {
             "id": "incontra-roberta-sorgato",

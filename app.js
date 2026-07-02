@@ -96,6 +96,89 @@ function findMinatoreBySlug(slug) {
     return null;
 }
 
+// Costruisce il blocco "Condividi" + "Mi piace" mostrato in fondo ad ogni articolo
+function buildShareAndLikeBlock(article) {
+    const pageUrl = `${window.location.origin}${window.location.pathname}#article-${article.id}`;
+    const encodedUrl = encodeURIComponent(pageUrl);
+    const encodedTitle = encodeURIComponent(article.title || 'Cuori di Carbone');
+
+    return `
+        <div class="article-share-like-wrap">
+            <div class="article-share-block">
+                <span class="article-share-label">Condividi:</span>
+                <div class="share-icons-row">
+                    <button type="button" class="share-icon-btn" data-share="print" title="Stampa" aria-label="Stampa articolo">
+                        <svg viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"/></svg>
+                    </button>
+                    <a class="share-icon-btn" href="https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}" target="_blank" rel="noopener" title="Condividi su X" aria-label="Condividi su X">
+                        <svg viewBox="0 0 24 24"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7.1l-5.6-6.9L4.2 22H1l8.1-9.3L.9 2H8l5 6.3L18.9 2z"/></svg>
+                    </a>
+                    <a class="share-icon-btn share-icon-whatsapp" href="https://wa.me/?text=${encodedTitle}%20${encodedUrl}" target="_blank" rel="noopener" title="Condividi su WhatsApp" aria-label="Condividi su WhatsApp">
+                        <svg viewBox="0 0 24 24"><path d="M20.5 3.5A11 11 0 0 0 2.2 17L1 23l6.2-1.2A11 11 0 1 0 20.5 3.5zM12 20.4a8.4 8.4 0 0 1-4.3-1.2l-.3-.2-3.2.6.6-3.1-.2-.3A8.4 8.4 0 1 1 12 20.4zm4.6-6.2c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8 1-.2.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5l.4-.4c.1-.1.2-.2.2-.4.1-.1 0-.3 0-.4-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.5 4 3.5.6.2 1 .4 1.3.5.6.2 1.1.1 1.5.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.4-.3z"/></svg>
+                    </a>
+                    <a class="share-icon-btn" href="mailto:?subject=${encodedTitle}&body=${encodedUrl}" title="Condividi via Email" aria-label="Condividi via Email">
+                        <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z" fill="none"/><path d="M22 6l-10 7L2 6"/><path d="M2 6h20v12H2z"/></svg>
+                    </a>
+                    <a class="share-icon-btn share-icon-telegram" href="https://t.me/share/url?url=${encodedUrl}&text=${encodedTitle}" target="_blank" rel="noopener" title="Condividi su Telegram" aria-label="Condividi su Telegram">
+                        <svg viewBox="0 0 24 24"><path d="M21.9 4.5 18.6 20a1 1 0 0 1-1.5.6l-4.8-3.6-2.3 2.2a.6.6 0 0 1-1-.3l-.5-4.3-8.1-2.7a.7.7 0 0 1 0-1.3L21 3.6a.7.7 0 0 1 .9.9z"/></svg>
+                    </a>
+                    <a class="share-icon-btn" href="https://www.threads.net/intent/post?text=${encodedTitle}%20${encodedUrl}" target="_blank" rel="noopener" title="Condividi su Threads" aria-label="Condividi su Threads">
+                        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10c0-2.4-.7-4.2-2-5.6-1.3-1.4-3.1-2.1-5.3-2.2-2.2-.1-4 .5-5.2 1.7-1 1-1.6 2.3-1.7 3.9h2.1c.1-1 .4-1.8 1-2.4.8-.8 2-1.2 3.6-1.1 1.6.1 2.8.6 3.6 1.5.7.8 1.1 1.9 1.2 3.3-.9-.5-2-.8-3.4-.8-1.7 0-3.1.4-4.1 1.3-1 .8-1.5 1.9-1.5 3.2 0 1.3.5 2.4 1.5 3.1 1 .7 2.2 1 3.6 1 1.9 0 3.4-.6 4.4-1.8.8-.9 1.3-2.1 1.5-3.6.7.5 1.2 1.1 1.5 1.9.5 1.2.4 2.7-.4 4-1 1.6-3 2.7-5.9 3z"/></svg>
+                    </a>
+                    <a class="share-icon-btn share-icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}" target="_blank" rel="noopener" title="Condividi su Facebook" aria-label="Condividi su Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="article-like-block">
+                <button type="button" class="btn-like-article" id="like-btn-${article.id}" data-article-id="${article.id}">
+                    <span class="like-star">★</span> <span class="like-btn-text">"Mi piace"</span>
+                </button>
+                <span class="like-count-text" id="like-count-${article.id}"></span>
+            </div>
+        </div>
+    `;
+}
+
+// Attiva il pulsante "Mi piace" per l'articolo corrente e ne mostra il conteggio salvato localmente
+function initLikeButton(articleId) {
+    const btn = document.getElementById(`like-btn-${articleId}`);
+    const countEl = document.getElementById(`like-count-${articleId}`);
+    if (!btn || !countEl) return;
+
+    const storageKey = `cdc_like_${articleId}`;
+    const likedKey = `cdc_liked_${articleId}`;
+
+    const refreshCount = () => {
+        const count = parseInt(localStorage.getItem(storageKey) || '0', 10);
+        const isLiked = localStorage.getItem(likedKey) === '1';
+        btn.classList.toggle('is-liked', isLiked);
+        countEl.innerText = count > 0 ? `${count} Mi piace` : "Di' per primo che ti piace";
+    };
+
+    refreshCount();
+
+    btn.addEventListener('click', () => {
+        const isLiked = localStorage.getItem(likedKey) === '1';
+        let count = parseInt(localStorage.getItem(storageKey) || '0', 10);
+        if (isLiked) {
+            count = Math.max(0, count - 1);
+            localStorage.setItem(likedKey, '0');
+        } else {
+            count += 1;
+            localStorage.setItem(likedKey, '1');
+        }
+        localStorage.setItem(storageKey, String(count));
+        refreshCount();
+    });
+}
+
+// Gestisce il click sul pulsante "Stampa" del blocco condivisione
+document.addEventListener('click', (e) => {
+    const printBtn = e.target.closest('[data-share="print"]');
+    if (printBtn) window.print();
+});
+
 function initThemeManager() {
     const toggleBtn = document.getElementById('theme-toggle-btn');
     const currentTheme = localStorage.getItem('theme') || 'dark';
@@ -620,12 +703,37 @@ function executeRouter(viewId, data) {
                             contentHTML += `<p class="article-full-img-caption">${section.images_caption}</p>`;
                         }
                     }
+
+                    // Supporto embed video YouTube all'interno di una sezione dell'articolo
+                    if (section.video_youtube_id) {
+                        contentHTML += `
+                            <div class="article-video-embed">
+                                <div class="article-video-frame-wrap">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/${section.video_youtube_id}"
+                                        title="${section.video_title || 'Video'}"
+                                        loading="lazy"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                                ${(section.video_title || section.video_source) ? `
+                                <p class="article-video-caption">
+                                    ${section.video_title ? `<strong>${section.video_title}</strong>` : ''}
+                                    ${section.video_source ? ` — ${section.video_source}` : ''}
+                                </p>` : ''}
+                            </div>
+                        `;
+                    }
                     
                     contentHTML += `</div>`;
                 });
             } else {
                 contentHTML += `<p class="article-full-text">${article.content || article.excerpt || 'Contenuto in fase di caricamento...'}</p>`;
             }
+
+            contentHTML += buildShareAndLikeBlock(article);
 
             contentHTML += `
                     <div class="article-full-footer">
@@ -700,6 +808,7 @@ function executeRouter(viewId, data) {
             ` : '';
 
             mainContainer.innerHTML = contentHTML + commentsHTML + relatedHTML + moreFromBlogSection;
+            initLikeButton(article.id);
         }
     } catch (routeError) {
         console.error("Crash protetto nel router JavaScript:", routeError);
