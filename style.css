@@ -770,6 +770,25 @@ body {
     justify-content: space-between;
     box-shadow: 0 4px 12px rgba(0,0,0,0.04);
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color, #d99a4e), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.blog-card:hover::before {
+    transform: scaleX(1);
 }
 
 .blog-card:hover { 
@@ -1067,6 +1086,15 @@ body {
     color: var(--color-text-pure);
 }
 
+.article-full-section h2:empty {
+    display: none;
+    margin: 0;
+}
+
+.article-full-intro-img {
+    margin-top: 10px;
+}
+
 .article-full-section p {
     font-size: 1.05rem;
     line-height: 1.9;
@@ -1080,6 +1108,13 @@ body {
     margin-bottom: 30px;
     max-height: 450px;
     object-fit: cover;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.article-full-img:hover {
+    transform: scale(1.015);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.26);
 }
 
 .article-full-text {

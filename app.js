@@ -684,6 +684,12 @@ function executeRouter(viewId, data) {
             }
 
             if (article.content && Array.isArray(article.content.sections)) {
+                if (article.content.intro_image) {
+                    contentHTML += `<img src="${fixImagePath(article.content.intro_image)}" alt="${article.title}" class="article-full-img article-full-intro-img">`;
+                    if (article.content.intro_image_caption) {
+                        contentHTML += `<p class="article-full-img-caption">${article.content.intro_image_caption}</p>`;
+                    }
+                }
                 contentHTML += `<p class="article-full-intro">${article.content.intro || ''}</p>`;
                 
                 article.content.sections.forEach(section => {
@@ -691,8 +697,20 @@ function executeRouter(viewId, data) {
                     contentHTML += `
                         <div class="article-full-section">
                             <h2>${section.heading || ''}</h2>
-                            <p>${section.text || ''}</p>
                     `;
+
+                    if (Array.isArray(section.images_before)) {
+                        section.images_before.forEach(img => {
+                            if (img) {
+                                contentHTML += `<img src="${fixImagePath(img)}" alt="${section.heading || ''}" class="article-full-img">`;
+                            }
+                        });
+                        if (section.images_before.length > 0 && section.images_before_caption) {
+                            contentHTML += `<p class="article-full-img-caption">${section.images_before_caption}</p>`;
+                        }
+                    }
+
+                    contentHTML += `<p>${section.text || ''}</p>`;
                     
                     if (Array.isArray(section.images)) {
                         section.images.forEach(img => {
