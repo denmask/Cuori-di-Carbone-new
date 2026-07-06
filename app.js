@@ -773,6 +773,26 @@ function executeRouter(viewId, data) {
                             </div>
                         `;
                     }
+
+                    if (section.map_embed_url) {
+                        contentHTML += `
+                            <div class="article-map-embed">
+                                <div class="article-map-frame-wrap">
+                                    <iframe
+                                        src="${section.map_embed_url}"
+                                        title="${section.map_title || 'Mappa interattiva'}"
+                                        loading="lazy"
+                                        frameborder="0">
+                                    </iframe>
+                                </div>
+                                ${(section.map_title || section.map_source) ? `
+                                <p class="article-map-caption">
+                                    ${section.map_title ? `<strong>${section.map_title}</strong>` : ''}
+                                    ${section.map_source ? ` — ${section.map_source}` : ''}
+                                </p>` : ''}
+                            </div>
+                        `;
+                    }
                     
                     contentHTML += `</div>`;
                 });
