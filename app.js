@@ -267,6 +267,8 @@ function buildApplication(data) {
         diarioExtra.innerText = data.home.diario_extra_text;
     }
 
+    buildProssimeTestimonianze(data);
+
     document.querySelectorAll('.footer-links-nav a').forEach(footerLink => {
         footerLink.addEventListener('click', (e) => {
             const targetId = footerLink.getAttribute('href').replace('#', '');
@@ -284,6 +286,33 @@ function buildApplication(data) {
     if (!initialHash || initialHash === 'home') {
         executeRouter('home', data);
     }
+}
+
+// Costruisce la sezione "Nuove Testimonianze in Cammino": storie di minatori in fase di raccolta,
+// visibile in ogni pagina in fondo al sito, subito prima del footer.
+function buildProssimeTestimonianze(data) {
+    const container = document.getElementById('prossime-testimonianze-container');
+    if (!container) return;
+
+    const elenco = Array.isArray(data.prossime_testimonianze) ? data.prossime_testimonianze : [];
+    if (elenco.length === 0) {
+        container.closest('.prossime-testimonianze-section')?.remove();
+        return;
+    }
+
+    container.innerHTML = '';
+    elenco.forEach(voce => {
+        const card = document.createElement('div');
+        card.className = 'prossima-testimonianza-card';
+        card.innerHTML = `
+            <div class="prossima-badge-stato">${voce.stato || 'In lavorazione'}</div>
+            <h3>${voce.nome || ''}</h3>
+            <div class="prossima-provincia">${voce.provincia || ''}</div>
+            <p class="prossima-anteprima">${voce.anteprima || ''}</p>
+            <div class="prossima-eta">${voce.eta_prevista || ''}</div>
+        `;
+        container.appendChild(card);
+    });
 }
 
 function executeRouter(viewId, data) {

@@ -918,6 +918,114 @@ body {
     color: var(--color-text-muted); 
 }
 
+/* ===== NUOVE TESTIMONIANZE IN CAMMINO ===== */
+.prossime-testimonianze-section {
+    border-top: 1px solid var(--navbar-border);
+    padding: 70px 0;
+}
+
+.prossime-eyebrow {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--color-amber), #f3c66a);
+    color: #1a1a1a;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+}
+
+.prossime-testimonianze-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 10px;
+}
+
+@media (max-width: 900px) {
+    .prossime-testimonianze-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.prossima-testimonianza-card {
+    position: relative;
+    background: var(--color-surface-card);
+    border: 1px solid var(--navbar-border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    overflow: hidden;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.prossima-testimonianza-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-amber), var(--color-green-btn));
+    opacity: 0.85;
+}
+
+.prossima-testimonianza-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.18);
+    border-color: var(--color-amber);
+}
+
+.prossima-badge-stato {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--color-amber);
+    background: rgba(226, 168, 59, 0.12);
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+}
+
+.prossima-testimonianza-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.prossima-provincia {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: 14px;
+}
+
+.prossima-anteprima {
+    font-size: 0.92rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.prossima-eta {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-text-pure);
+    opacity: 0.75;
+}
+
+.prossime-testimonianze-cta {
+    text-align: center;
+    max-width: 600px;
+    margin: 45px auto 0 auto;
+}
+
+.prossime-testimonianze-cta p {
+    color: var(--color-text-muted);
+    margin-bottom: 20px;
+    font-size: 0.98rem;
+}
+
 .footer-site { 
     background-color: var(--color-bg-main); 
     border-top: 1px solid var(--navbar-border); 
