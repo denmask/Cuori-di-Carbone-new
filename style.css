@@ -187,6 +187,7 @@ body {
     text-align: left; 
     padding: 60px 0 30px 0; 
     max-width: 800px; 
+    position: relative;
 }
 
 .hero-home-section h1 { 
@@ -194,6 +195,8 @@ body {
     font-weight: 700; 
     margin-bottom: 25px; 
     line-height: 1.15; 
+    position: relative;
+    z-index: 1;
 }
 
 .hero-home-section p { 
@@ -202,6 +205,36 @@ body {
     font-style: italic; 
     font-weight: 400; 
     line-height: 1.7; 
+    position: relative;
+    z-index: 1;
+}
+
+.hero-embers {
+    position: absolute;
+    inset: -20px 0 0 0;
+    height: 260px;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.ember-spark {
+    position: absolute;
+    bottom: -10px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--color-amber);
+    box-shadow: 0 0 6px 2px rgba(226, 168, 59, 0.55);
+    animation-name: emberRise;
+    animation-timing-function: ease-in;
+    animation-iteration-count: infinite;
+}
+
+@keyframes emberRise {
+    0% { transform: translateY(0) translateX(0); opacity: 0; }
+    12% { opacity: 1; }
+    100% { transform: translateY(-230px) translateX(14px); opacity: 0; }
 }
 
 .stats-row-grid { 
@@ -251,6 +284,42 @@ body {
     color: var(--color-text-muted); 
     font-size: 1.05rem; 
     line-height: 1.6; 
+}
+
+.eventi-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.eventi-filter-btn {
+    background-color: var(--color-surface-card);
+    color: var(--color-text-pure);
+    border: none;
+    padding: 9px 18px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+
+.eventi-filter-btn:hover {
+    transform: translateY(-2px);
+}
+
+.eventi-filter-btn.is-active {
+    background-color: var(--color-amber);
+    color: #1c1c1e;
+}
+
+.evento-row-item {
+    transition: opacity 0.3s ease;
 }
 
 .eventi-alternating-container { 
@@ -439,7 +508,6 @@ body {
     font-size: 0.75rem;
 }
 
-/* Citazione breve di testimonianza (più discreta del quote-highlight ambra) */
 .quote-testimonianza {
     display: block;
     font-style: italic;
@@ -451,7 +519,6 @@ body {
     line-height: 1.7;
 }
 
-/* Commenti già presenti sotto il form "Rispondi" */
 .existing-comments-heading {
     font-family: var(--font-sans);
     font-size: 1.6rem;
@@ -483,7 +550,6 @@ body {
     color: var(--color-text-muted);
 }
 
-/* Pagina di dettaglio completa del minatore (biografia, cronologia, testimonianza) */
 .minatore-dettaglio-page {
     max-width: 900px;
     margin: 0 auto;
@@ -519,6 +585,12 @@ body {
     border-radius: 12px;
     object-fit: cover;
     margin-bottom: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.minatore-dett-img:hover {
+    transform: scale(1.01);
 }
 
 .minatore-dett-caption {
@@ -651,6 +723,9 @@ body {
     border-radius: 20px; 
     font-size: 0.9rem; 
     font-weight: 700;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-sans);
     transition: all 0.2s ease;
 }
 
@@ -659,11 +734,113 @@ body {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.map-visualization-box img { 
-    max-width: 400px; 
-    width: 100%; 
-    filter: var(--color-invert-map);
-    border-radius: 12px;
+.region-tag-pill.is-active {
+    background-color: var(--color-amber);
+    color: #1c1c1e;
+}
+
+.map-visualization-box {
+    display: flex;
+    justify-content: center;
+}
+
+.mappa-interattiva-wrap {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 30px;
+    align-items: center;
+    max-width: 800px;
+    width: 100%;
+    text-align: left;
+}
+
+.mappa-italia-svg {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    justify-self: center;
+}
+
+.mappa-italia-shape {
+    fill: var(--color-surface-card);
+    stroke: var(--navbar-border);
+    stroke-width: 1.5;
+    transition: fill 0.3s ease;
+}
+
+.mappa-pin {
+    cursor: pointer;
+}
+
+.mappa-pin circle {
+    fill: var(--color-amber);
+    stroke: var(--color-bg-main);
+    stroke-width: 1.5;
+    transition: r 0.2s ease, opacity 0.2s ease;
+}
+
+.mappa-pin:hover circle,
+.mappa-pin.is-active circle {
+    opacity: 1 !important;
+    filter: drop-shadow(0 0 6px rgba(226, 168, 59, 0.8));
+}
+
+.mappa-pin text {
+    font-size: 7px;
+    font-weight: 700;
+    fill: var(--color-text-pure);
+    text-anchor: middle;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.mappa-pin:hover text,
+.mappa-pin.is-active text {
+    opacity: 1;
+}
+
+.mappa-info-panel {
+    background: var(--color-surface);
+    border: 1px solid var(--navbar-border);
+    border-radius: 14px;
+    padding: 24px;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mappa-info-placeholder {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.mappa-info-region {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.mappa-info-count {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: var(--color-amber);
+    line-height: 1;
+    margin-bottom: 6px;
+}
+
+.mappa-info-label {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    font-weight: 600;
+}
+
+@media (max-width: 700px) {
+    .mappa-interattiva-wrap {
+        grid-template-columns: 1fr;
+    }
 }
 
 .founder-block { 
@@ -860,11 +1037,14 @@ body {
     font-size: 0.95rem; 
 }
 
-.line-divider { 
-    width: 40px; 
-    height: 2px; 
-    background-color: var(--color-amber); 
-    margin: 12px auto; 
+.line-divider {
+    width: 90px;
+    height: 10px;
+    margin: 14px auto;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 10'%3E%3Cpath d='M0,5 Q7,0 14,5 T28,5 T42,5 T56,5 T70,5 T90,5' stroke='%23e2a83b' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
 .diario-slider { 
@@ -918,7 +1098,6 @@ body {
     color: var(--color-text-muted); 
 }
 
-/* ===== NUOVE TESTIMONIANZE IN CAMMINO ===== */
 .prossime-testimonianze-section {
     border-top: 1px solid var(--navbar-border);
     padding: 70px 0;
@@ -1149,6 +1328,7 @@ body {
     max-height: 500px;
     object-fit: cover;
     animation: fadeIn 0.5s ease-in;
+    cursor: pointer;
 }
 
 .article-full-intro {
@@ -1218,6 +1398,7 @@ body {
     object-fit: cover;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
     transition: transform 0.35s ease, box-shadow 0.35s ease;
+    cursor: pointer;
 }
 
 .article-full-img:hover {
@@ -1619,7 +1800,6 @@ body {
         height: 35px;
     }
 }
-/* ===== IL NOSTRO CAMMINO - TIMELINE ===== */
 .cammino-section {
     padding: 60px 0;
     border-top: 1px solid var(--navbar-border);
@@ -1644,12 +1824,40 @@ body {
     position: relative;
     margin-top: 50px;
     padding-left: 30px;
-    border-left: 2px solid var(--navbar-border);
+}
+
+.tappe-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--navbar-border);
+}
+
+.tappe-timeline-progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 0%;
+    background: var(--color-amber);
+    box-shadow: 0 0 8px rgba(226, 168, 59, 0.5);
+    transition: height 0.15s linear;
 }
 
 .tappa-item {
     position: relative;
     margin-bottom: 45px;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.tappa-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .tappa-item:last-child {
@@ -1665,6 +1873,11 @@ body {
     border-radius: 50%;
     background-color: var(--color-bg-main);
     border: 2px solid var(--color-amber);
+    transition: background-color 0.4s ease;
+}
+
+.tappa-item.is-visible .tappa-dot {
+    background-color: var(--color-amber);
 }
 
 .tappa-row {
@@ -1725,6 +1938,13 @@ body {
     color: transparent;
     text-indent: -9999px;
     overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.tappa-images-grid img:hover {
+    transform: scale(1.03);
+    filter: brightness(1.08);
 }
 
 .tappa-images-grid.count-1 {
@@ -1808,7 +2028,6 @@ body {
     opacity: 0.85;
 }
 
-/* ===== CURIOSI DI CARBONE - PREVIEW ===== */
 .curiosi-preview-section {
     padding: 60px 0;
     border-top: 1px solid var(--navbar-border);
@@ -1899,7 +2118,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* ===== DIARIO - context/meta extra ===== */
 .diario-context {
     font-size: 0.8rem;
     color: var(--color-text-pure);
@@ -1913,7 +2131,6 @@ body {
     margin-top: 4px;
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .tappe-timeline {
         padding-left: 22px;
@@ -1942,7 +2159,6 @@ body {
     }
 }
 
-/* ===== FIX TESTO ALT SU IMMAGINI NON ANCORA CARICATE ===== */
 .founder-img,
 .article-full-cover,
 .article-full-img,
@@ -1952,11 +2168,7 @@ body {
     text-indent: -9999px;
     overflow: hidden;
 }
-/* ============================================= */
-/* SEZIONI ARTICOLO: RISPONDI / ULTIMI ARTICOLI / MORE FROM THE BLOG */
-/* ============================================= */
 
-/* ===== VIDEO EMBED YOUTUBE NEGLI ARTICOLI ===== */
 .article-video-embed {
     margin: 25px 0 10px 0;
 }
@@ -1964,8 +2176,7 @@ body {
 .article-video-frame-wrap {
     position: relative;
     width: 100%;
-    padding-top: 56.25%; /* Rapporto 16:9 */
-    border-radius: 12px;
+    padding-top: 56.25%;     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 8px 24px rgba(0,0,0,0.25);
     background-color: #000;
@@ -1987,7 +2198,6 @@ body {
     margin-top: 10px;
 }
 
-/* ===== MAPPA INTERATTIVA (Google My Maps) NEGLI ARTICOLI ===== */
 .article-map-embed {
     margin: 25px 0 10px 0;
 }
@@ -1995,8 +2205,7 @@ body {
 .article-map-frame-wrap {
     position: relative;
     width: 100%;
-    padding-top: 75%; /* Rapporto 4:3, tipico di Google My Maps */
-    border-radius: 12px;
+    padding-top: 75%;     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 8px 24px rgba(0,0,0,0.25);
     background-color: #1a1a1a;
@@ -2025,7 +2234,6 @@ body {
     }
 }
 
-/* ===== BLOCCO CONDIVIDI + MI PIACE ===== */
 .article-share-like-wrap {
     max-width: 780px;
     margin: 45px auto 0 auto;
@@ -2338,5 +2546,109 @@ body {
     .article-related-section h2,
     .more-from-blog-section h2 {
         font-size: 1.6rem;
+    }
+}
+.cdc-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    z-index: 1000;
+    padding: 30px;
+}
+
+.cdc-lightbox.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cdc-lightbox-img {
+    max-width: 90vw;
+    max-height: 82vh;
+    border-radius: 10px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    object-fit: contain;
+}
+
+.cdc-lightbox-caption {
+    position: absolute;
+    bottom: 24px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #ffffff;
+    font-size: 0.9rem;
+    opacity: 0.85;
+    padding: 0 60px;
+}
+
+.cdc-lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #ffffff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cdc-lightbox-close:hover {
+    background: var(--color-amber);
+    color: #1c1c1e;
+    transform: rotate(90deg);
+}
+
+.cdc-lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #ffffff;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cdc-lightbox-nav:hover {
+    background: var(--color-amber);
+    color: #1c1c1e;
+}
+
+.cdc-lightbox-prev {
+    left: 24px;
+}
+
+.cdc-lightbox-next {
+    right: 24px;
+}
+
+@media (max-width: 600px) {
+    .cdc-lightbox-nav {
+        width: 38px;
+        height: 38px;
+        font-size: 1.4rem;
+    }
+    .cdc-lightbox-close {
+        width: 34px;
+        height: 34px;
+    }
+    .cdc-lightbox-caption {
+        padding: 0 40px;
+        font-size: 0.8rem;
     }
 }

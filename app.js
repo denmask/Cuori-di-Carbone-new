@@ -25,11 +25,9 @@ function handleRouting() {
     }
 }
 
-// Ricerca potenziata e flessibile per evitare mismatch di tipo (stringa/numero/slug)
 function findArticleById(id) {
     if (!globalData || !globalData.curiosi_di_carbone || !globalData.curiosi_di_carbone.sezioni) return null;
     
-    // Puliamo l'id ricevuto per il confronto
     const cleanId = String(id).toLowerCase().trim().replace('article-', '');
 
     for (let sezione of globalData.curiosi_di_carbone.sezioni) {
@@ -39,10 +37,8 @@ function findArticleById(id) {
             if (!art) return false;
             const artId = String(art.id).toLowerCase().trim();
             
-            // 1. Confronto diretto ID (es. "santa-barbara-latisana-2025" o "1")
             if (artId === cleanId) return true;
             
-            // 2. Fallback di sicurezza: Generiamo uno slug automatico dal titolo se l'ID differisce
             if (art.title) {
                 const titleSlug = art.title.toLowerCase()
                     .replace(/[^a-z0-9]+/g, '-')
@@ -57,7 +53,6 @@ function findArticleById(id) {
     return null;
 }
 
-// Restituisce l'elenco completo (piatto) di tutti gli articoli del blog "Curiosi di Carbone"
 function getAllArticles(data) {
     if (!data || !data.curiosi_di_carbone || !Array.isArray(data.curiosi_di_carbone.sezioni)) return [];
     let all = [];
@@ -67,7 +62,6 @@ function getAllArticles(data) {
     return all;
 }
 
-// Converte una data testuale in italiano (es. "16 Dicembre 2025") in un oggetto Date per l'ordinamento
 function parseItalianDate(dateStr) {
     if (!dateStr) return new Date(0);
     const mesi = {
@@ -83,7 +77,6 @@ function parseItalianDate(dateStr) {
     return new Date(anno, mese, giorno);
 }
 
-// Ricerca del minatore in evidenza tramite slug per la pagina di dettaglio dedicata
 function findMinatoreBySlug(slug) {
     if (!globalData || !globalData.i_nostri_minatori) return null;
     const mData = globalData.i_nostri_minatori;
@@ -96,7 +89,6 @@ function findMinatoreBySlug(slug) {
     return null;
 }
 
-// Costruisce il blocco "Condividi" + "Mi piace" mostrato in fondo ad ogni articolo
 function buildShareAndLikeBlock(article) {
     const pageUrl = `${window.location.origin}${window.location.pathname}#article-${article.id}`;
     const encodedUrl = encodeURIComponent(pageUrl);
@@ -140,7 +132,6 @@ function buildShareAndLikeBlock(article) {
     `;
 }
 
-// Attiva il pulsante "Mi piace" per l'articolo corrente e ne mostra il conteggio salvato localmente
 function initLikeButton(articleId) {
     const btn = document.getElementById(`like-btn-${articleId}`);
     const countEl = document.getElementById(`like-count-${articleId}`);
@@ -173,13 +164,11 @@ function initLikeButton(articleId) {
     });
 }
 
-// Gestisce il click sul pulsante "Stampa" del blocco condivisione
 document.addEventListener('click', (e) => {
     const printBtn = e.target.closest('[data-share="print"]');
     if (printBtn) window.print();
 });
 
-// Gestione del Tema (Chiaro/Scuro)
 function initThemeManager() {
     const toggleBtn = document.getElementById('theme-toggle-btn');
     const currentTheme = localStorage.getItem('theme') || 'dark';
@@ -197,34 +186,263 @@ function initThemeManager() {
     }
 }
 
-// FUNZIONE DI SICUREZZA PER I PERCORSI DELLE IMMAGINI (INTELLIGENTE - AGGIORNATA)
 function fixImagePath(path) {
     if (!path) return '';
     
-    // Se è un array (es. più immagini salvate nel JSON), prendiamo la prima di default per non rompere il layout
     if (Array.isArray(path)) {
         if (path.length === 0) return '';
         path = path[0];
     }
 
-    // Se è già un URL assoluto web, lo lasciamo intatto
     if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
-    // Puliamo il testo da spazi bianchi extra
     let cleanPath = path.trim();
     
-    // Rimuoviamo eventuali prefissi relativi già presenti
     if (cleanPath.startsWith('./')) cleanPath = cleanPath.slice(2);
     if (cleanPath.startsWith('/')) cleanPath = cleanPath.slice(1);
 
-    // Se il percorso non contiene esplicitamente la parola "images/", la aggiungiamo all'inizio.
     if (!cleanPath.toLowerCase().startsWith('images/')) {
         cleanPath = 'images/' + cleanPath;
     }
 
-    // Percorso relativo finale
     return './' + cleanPath;
 }
+
+function animateCounter(el) {
+    const target = parseInt(el.getAttribute('data-count-to'), 10);
+    const suffix = el.getAttribute('data-count-suffix') || '';
+    if (isNaN(target)) return;
+    const duration = 1400;
+    const startTime = performance.now();
+    function tick(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = Math.round(target * eased);
+        el.innerText = value + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+        else el.innerText = target + suffix;
+    }
+    requestAnimationFrame(tick);
+}
+
+function initCounters(scope) {
+    const root = scope || document;
+    const elements = root.querySelectorAll('[data-count-to]');
+    if (!elements.length) return;
+    if (!('IntersectionObserver' in window)) {
+        elements.forEach(el => animateCounter(el));
+        return;
+    }
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.4 });
+    elements.forEach(el => observer.observe(el));
+}
+
+function initHeroEmbers() {
+    const container = document.getElementById('hero-embers');
+    if (!container) return;
+    container.innerHTML = '';
+    const count = 14;
+    for (let i = 0; i < count; i++) {
+        const ember = document.createElement('span');
+        ember.className = 'ember-spark';
+        ember.style.left = (Math.random() * 100) + '%';
+        ember.style.animationDelay = (Math.random() * 6) + 's';
+        ember.style.animationDuration = (5 + Math.random() * 5) + 's';
+        ember.style.opacity = (0.35 + Math.random() * 0.5).toFixed(2);
+        container.appendChild(ember);
+    }
+}
+
+function initTimelineReveal() {
+    const timeline = document.querySelector('.tappe-timeline');
+    if (!timeline) return;
+    const items = timeline.querySelectorAll('.tappa-item');
+    const progressLine = document.createElement('div');
+    progressLine.className = 'tappe-timeline-progress';
+    timeline.appendChild(progressLine);
+
+    if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('is-visible');
+            });
+        }, { threshold: 0.2 });
+        items.forEach(item => revealObserver.observe(item));
+    } else {
+        items.forEach(item => item.classList.add('is-visible'));
+    }
+
+    const updateProgress = () => {
+        const rect = timeline.getBoundingClientRect();
+        const viewportMark = window.innerHeight * 0.75;
+        const total = rect.height;
+        let filled = viewportMark - rect.top;
+        filled = Math.max(0, Math.min(total, filled));
+        const pct = total > 0 ? (filled / total) * 100 : 0;
+        progressLine.style.height = pct + '%';
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    updateProgress();
+}
+
+const REGION_COORDS = {
+    "Valle d'Aosta": { x: 88, y: 55 },
+    "Trentino-Alto Adige": { x: 200, y: 45 },
+    "Lombardia": { x: 138, y: 76 },
+    "Veneto": { x: 208, y: 76 },
+    "Friuli-Venezia Giulia": { x: 246, y: 66 },
+    "Toscana": { x: 148, y: 190 },
+    "Lazio": { x: 174, y: 258 },
+    "Abruzzo": { x: 206, y: 238 },
+    "Puglia": { x: 258, y: 268 },
+    "Sicilia": { x: 184, y: 405 },
+    "Sardegna": { x: 66, y: 270 }
+};
+
+const ITALIA_MAINLAND_PATH = "M75,18 C110,10 160,8 195,20 C215,30 225,45 232,62 C242,95 248,140 258,178 C268,215 282,255 288,285 C282,298 268,300 255,290 C244,282 235,290 232,308 C228,330 222,345 210,352 C202,357 200,368 196,378 C190,362 182,345 178,330 C172,310 162,300 150,296 C144,310 134,322 122,318 C108,313 104,295 112,278 C98,268 88,252 92,232 C96,214 88,196 96,178 C84,164 78,146 84,126 C90,108 84,90 92,72 C98,54 84,40 75,18 Z";
+const ITALIA_SICILIA_PATH = "M165,390 C180,386 198,390 208,400 C214,408 208,418 196,420 C182,422 168,418 160,408 C156,400 158,394 165,390 Z";
+const ITALIA_SARDEGNA_PATH = "M55,235 C68,228 82,232 86,248 C90,268 88,290 82,308 C78,320 66,322 58,312 C50,300 48,280 50,262 C51,252 50,242 55,235 Z";
+
+function buildMappaInterattiva(mData) {
+    const regioni = Array.isArray(mData.statistiche.regioni) ? mData.statistiche.regioni : [];
+    const max = Math.max.apply(null, regioni.map(r => r.conteggio).concat([1]));
+    let pinsHTML = '';
+    regioni.forEach(r => {
+        const coord = REGION_COORDS[r.nome];
+        if (!coord) return;
+        const ratio = r.conteggio / max;
+        const radius = (8 + ratio * 14).toFixed(1);
+        const opacity = (0.45 + ratio * 0.55).toFixed(2);
+        pinsHTML += `
+            <g class="mappa-pin" data-region="${r.nome}" data-count="${r.conteggio}" tabindex="0" role="button" aria-label="${r.nome}: ${r.conteggio} minatori ritrovati">
+                <circle cx="${coord.x}" cy="${coord.y}" r="${radius}" style="opacity:${opacity};"></circle>
+                <text x="${coord.x}" y="${coord.y + parseFloat(radius) + 13}">${r.nome}</text>
+            </g>
+        `;
+    });
+
+    return `
+        <div class="mappa-interattiva-wrap">
+            <svg class="mappa-italia-svg" viewBox="0 0 300 430" xmlns="http://www.w3.org/2000/svg" aria-hidden="false">
+                <path class="mappa-italia-shape" d="${ITALIA_MAINLAND_PATH}"></path>
+                <path class="mappa-italia-shape" d="${ITALIA_SICILIA_PATH}"></path>
+                <path class="mappa-italia-shape" d="${ITALIA_SARDEGNA_PATH}"></path>
+                ${pinsHTML}
+            </svg>
+            <div class="mappa-info-panel" id="mappa-info-panel">
+                <div class="mappa-info-placeholder">Seleziona una regione sulla mappa o dall'elenco qui sopra per scoprire quanti minatori sono stati ritrovati.</div>
+            </div>
+        </div>
+    `;
+}
+
+function selectRegione(nome, count) {
+    const panel = document.getElementById('mappa-info-panel');
+    if (!panel) return;
+    document.querySelectorAll('.mappa-pin.is-active, .region-tag-pill.is-active').forEach(el => el.classList.remove('is-active'));
+    document.querySelectorAll(`.mappa-pin[data-region="${nome}"], .region-tag-pill[data-region="${nome}"]`).forEach(el => el.classList.add('is-active'));
+    panel.innerHTML = `
+        <div class="mappa-info-region">${nome}</div>
+        <div class="mappa-info-count">${count}</div>
+        <div class="mappa-info-label">minatori ritrovati in questa regione</div>
+    `;
+}
+
+let cdcLightboxGroup = [];
+let cdcLightboxIndex = 0;
+
+function openLightbox(images, index, caption) {
+    if (!images.length) return;
+    cdcLightboxGroup = images;
+    cdcLightboxIndex = index;
+    const lb = document.getElementById('cdc-lightbox');
+    const img = document.getElementById('cdc-lightbox-img');
+    const cap = document.getElementById('cdc-lightbox-caption');
+    if (!lb || !img) return;
+    img.src = cdcLightboxGroup[cdcLightboxIndex];
+    if (cap) cap.innerText = caption || '';
+    lb.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    const lb = document.getElementById('cdc-lightbox');
+    if (!lb) return;
+    lb.classList.remove('is-open');
+    document.body.style.overflow = '';
+}
+
+function showLightboxDelta(delta) {
+    if (!cdcLightboxGroup.length) return;
+    cdcLightboxIndex = (cdcLightboxIndex + delta + cdcLightboxGroup.length) % cdcLightboxGroup.length;
+    const img = document.getElementById('cdc-lightbox-img');
+    if (img) img.src = cdcLightboxGroup[cdcLightboxIndex];
+}
+
+document.addEventListener('click', (e) => {
+    const mapTarget = e.target.closest('.mappa-pin, .region-tag-pill');
+    if (mapTarget) {
+        const nome = mapTarget.getAttribute('data-region');
+        const count = mapTarget.getAttribute('data-count');
+        selectRegione(nome, count);
+        return;
+    }
+
+    const filterBtn = e.target.closest('.eventi-filter-btn');
+    if (filterBtn) {
+        const filter = filterBtn.getAttribute('data-filter');
+        document.querySelectorAll('.eventi-filter-btn').forEach(b => b.classList.remove('is-active'));
+        filterBtn.classList.add('is-active');
+        document.querySelectorAll('.evento-row-item').forEach(item => {
+            const cat = item.getAttribute('data-categoria');
+            item.style.display = (filter === 'tutti' || cat === filter) ? '' : 'none';
+        });
+        return;
+    }
+
+    const galleryImg = e.target.closest('.tappa-images-grid img, .article-full-img, .article-full-intro-img, .article-full-cover, .minatore-dett-img');
+    if (galleryImg && galleryImg.tagName === 'IMG') {
+        const groupContainer = galleryImg.closest('.tappa-images-grid');
+        let group = [];
+        if (groupContainer) {
+            group = Array.from(groupContainer.querySelectorAll('img')).map(i => i.src);
+        } else {
+            group = [galleryImg.src];
+        }
+        const idx = group.indexOf(galleryImg.src);
+        openLightbox(group, idx >= 0 ? idx : 0, galleryImg.alt);
+        return;
+    }
+
+    if (e.target.id === 'cdc-lightbox-close' || e.target.id === 'cdc-lightbox') {
+        closeLightbox();
+        return;
+    }
+    if (e.target.id === 'cdc-lightbox-prev') {
+        showLightboxDelta(-1);
+        return;
+    }
+    if (e.target.id === 'cdc-lightbox-next') {
+        showLightboxDelta(1);
+        return;
+    }
+});
+
+document.addEventListener('keydown', (e) => {
+    const lb = document.getElementById('cdc-lightbox');
+    if (!lb || !lb.classList.contains('is-open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') showLightboxDelta(1);
+    if (e.key === 'ArrowLeft') showLightboxDelta(-1);
+});
 
 function buildApplication(data) {
     const navContainer = document.getElementById('main-nav');
@@ -281,15 +499,12 @@ function buildApplication(data) {
         });
     });
 
-    // Rispettiamo l'eventuale hash iniziale presente all'apertura della pagina
     const initialHash = window.location.hash.slice(1);
     if (!initialHash || initialHash === 'home') {
         executeRouter('home', data);
     }
 }
 
-// Costruisce la sezione "Nuove Testimonianze in Cammino": storie di minatori in fase di raccolta,
-// visibile in ogni pagina in fondo al sito, subito prima del footer.
 function buildProssimeTestimonianze(data) {
     const container = document.getElementById('prossime-testimonianze-container');
     if (!container) return;
@@ -331,9 +546,12 @@ function executeRouter(viewId, data) {
         if (viewId === 'home') {
             let statsHTML = '';
             data.home.stats.forEach(s => {
+                const match = String(s.value).match(/^(\d+)(.*)$/);
+                const targetNum = match ? match[1] : '0';
+                const suffix = match ? match[2] : '';
                 statsHTML += `
                     <div class="stat-item-box">
-                        <div class="num-val">${s.value}</div>
+                        <div class="num-val" data-count-to="${targetNum}" data-count-suffix="${suffix}">0${suffix}</div>
                         <div class="lbl-txt">${s.label}</div>
                     </div>
                 `;
@@ -388,6 +606,7 @@ function executeRouter(viewId, data) {
             mainContainer.innerHTML = `
                 <section class="container">
                     <div class="hero-home-section">
+                        <div class="hero-embers" id="hero-embers"></div>
                         <h1>${data.home.title}</h1>
                         <p>${data.home.description}</p>
                     </div>
@@ -443,6 +662,9 @@ function executeRouter(viewId, data) {
                 </section>
                 ` : ''}
             `;
+            initCounters(mainContainer);
+            initHeroEmbers();
+            initTimelineReveal();
         } 
         else if (viewId === 'chi-siamo') {
             mainContainer.innerHTML = `
@@ -472,7 +694,7 @@ function executeRouter(viewId, data) {
             const mData = data.i_nostri_minatori;
             let regioniHTML = '';
             mData.statistiche.regioni.forEach(r => {
-                regioniHTML += `<div class="region-tag-pill">${r.nome} <span>(${r.conteggio})</span></div>`;
+                regioniHTML += `<button type="button" class="region-tag-pill" data-region="${r.nome}" data-count="${r.conteggio}">${r.nome} <span>(${r.conteggio})</span></button>`;
             });
 
             mainContainer.innerHTML = `
@@ -497,30 +719,33 @@ function executeRouter(viewId, data) {
 
                     <div class="stats-panel-white">
                         <div style="font-size:0.8rem; font-weight:700; opacity:0.8;">MINATORI ATTUALMENTE RITROVATI</div>
-                        <div class="big-counter">${mData.statistiche.totale}</div>
-                        <div style="margin-bottom:20px; font-size:0.9rem;">Identificati: <strong>${mData.statistiche.identificati}</strong> | Non identificati: <strong>${mData.statistiche.non_identificati}</strong></div>
+                        <div class="big-counter" data-count-to="${mData.statistiche.totale}">0</div>
+                        <div style="margin-bottom:20px; font-size:0.9rem;">Identificati: <strong data-count-to="${mData.statistiche.identificati}">0</strong> | Non identificati: <strong data-count-to="${mData.statistiche.non_identificati}">0</strong></div>
                         <div class="regions-flex-wrap">${regioniHTML}</div>
                     </div>
 
                     <div style="text-align:center; margin-top:50px;">
                         <p style="max-width:700px; margin:0 auto 30px auto; color:var(--color-text-muted);">${mData.sub_text}</p>
                         <div class="map-visualization-box">
-                            <img src="${fixImagePath(mData.mappa_immagine)}" alt="Mappa">
+                            ${buildMappaInterattiva(mData)}
                         </div>
                     </div>
                 </section>
             `;
+            initCounters(mainContainer);
         } 
         else if (viewId === 'eventi') {
             const ePage = data.eventi_page;
             let catesHTML = '';
-            
+            let filtriHTML = `<button type="button" class="eventi-filter-btn is-active" data-filter="tutti">Tutti</button>`;
+
             ePage.categorie.forEach((cat, index) => {
                 const isReversed = index % 2 !== 0 ? 'reversed' : '';
                 const btnClass = cat.button_type === 'green' ? 'btn-evt-green' : 'btn-evt-dark';
-                
+                filtriHTML += `<button type="button" class="eventi-filter-btn" data-filter="${cat.id}">${cat.title}</button>`;
+
                 catesHTML += `
-                    <div class="evento-row-item ${isReversed}">
+                    <div class="evento-row-item ${isReversed}" data-categoria="${cat.id}">
                         <div class="evento-text-col">
                             <h2>${cat.title}</h2>
                             <p>${cat.text}</p>
@@ -541,6 +766,7 @@ function executeRouter(viewId, data) {
                         <h1>${ePage.title}</h1>
                         <p>${ePage.description}</p>
                     </div>
+                    <div class="eventi-filter-bar">${filtriHTML}</div>
                     <div class="eventi-alternating-container">
                         ${catesHTML}
                     </div>
